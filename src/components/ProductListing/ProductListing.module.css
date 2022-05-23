@@ -1,0 +1,10 @@
+.productContainer {
+	display: flex;
+	justify-content: space-around;
+	background-color: blue;
+}
+
+.productCard {
+	flex: 0 0 300px;
+	max-width: 400px;
+}
