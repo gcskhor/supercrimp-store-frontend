@@ -1,11 +1,17 @@
-import "./App.css";
+import './App.css';
+
+import Navbar from './components/Navbar/Navbar.js';
+import BannerCarousel from './components/BannerCarousel/BannerCarousel.js';
+import ProductListing from './components/ProductListing/ProductListing.js';
 
 function App() {
-  return (
-    <div>
-      <h2>Supercrimp Online Store</h2>
-    </div>
-  );
+	return (
+		<div>
+			<Navbar />
+			<BannerCarousel />
+			<ProductListing />
+		</div>
+	);
 }
 
 export default App;
