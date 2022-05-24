@@ -7,14 +7,12 @@ import Drawers from "./Dashboard/Drawers.js";
 
 const drawerWidth = 240;
 
-function Dashboard() {
+function Dashboard({ Outlet }) {
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
-  const content = <Box>content goes in here</Box>;
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -38,7 +36,9 @@ function Dashboard() {
         }}
       >
         <Toolbar />
-        <Box>{content}</Box>
+        <Box>
+          <Outlet />
+        </Box>
       </Box>
     </Box>
   );
