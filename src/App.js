@@ -1,15 +1,13 @@
 import './App.css';
+import { Outlet } from 'react-router-dom';
 
 import Navbar from './components/Navbar/Navbar.js';
-import BannerCarousel from './components/BannerCarousel/BannerCarousel.js';
-import ProductListing from './components/ProductListing/ProductListing.js';
 
 function App() {
 	return (
 		<div>
 			<Navbar />
-			<BannerCarousel />
-			<ProductListing />
+			<Outlet />
 		</div>
 	);
 }
