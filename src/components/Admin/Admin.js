@@ -1,3 +1,9 @@
+import Dashboard from "./AdminComponents/Dashboard.js";
+
 export default function Admin() {
-	return <div></div>;
+  return (
+    <div>
+      <Dashboard />
+    </div>
+  );
 }
