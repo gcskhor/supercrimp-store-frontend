@@ -13,9 +13,6 @@ import HomeIcon from "@mui/icons-material/Home";
 import CategoryIcon from "@mui/icons-material/Category";
 import ColorLensIcon from "@mui/icons-material/ColorLens";
 
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
-
 export default function LeftDrawer() {
   return (
     <div>
