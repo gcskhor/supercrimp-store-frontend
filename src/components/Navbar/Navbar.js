@@ -1,3 +1,3 @@
 export default function Navbar() {
-	return null;
+	return <div style={{ backgroundColor: 'yellow' }}>navbar</div>;
 }
