@@ -1,10 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import './index.css';
-import App from './App';
-import Home from './components/Home.js';
-import Admin from './components/Admin/Admin.js';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import "./index.css";
+import App from "./App";
+import Home from "./components/Home.js";
+
+import Admin from "./components/Admin/Admin.js";
+import Products from "./components/Admin/AdminComponents/Products/Products.js";
+import Colours from "./components/Admin/AdminComponents/Dashboard/Colours/Colours";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -28,22 +31,19 @@ root.render(
 					path="profile"
 					element={<INSERT-PROFILE-COMPONENT-HERE />}
 				/> */}
-				<Route
-					path="*" // TODO: create 404 component to handle this
-					element={
-						<main>
-							<p>There's nothing here!</p>
-						</main>
-					}
-				/>
-			</Route>
-			<Route path="/admin" element={<Admin />}>
-				{/* <Route path="login" element={<INSERT-ADMIN-LOGIN-COMPONENT-HERE />} /> */}
-				{/* <Route
-					path="products"
-					element={<INSERT-ADMIN-PRODUCTS-COMPONENT-HERE />}
-				/> */}
-				{/* <Route
+        <Route
+          path="*" // TODO: create 404 component to handle this
+          element={
+            <main>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
+      </Route>
+      <Route path="/admin" element={<Admin />}>
+        {/* <Route path="login" element={<INSERT-ADMIN-LOGIN-COMPONENT-HERE />} /> */}
+        <Route path="products" element={<Products />} />
+        {/* <Route
 					path="product"
 					element={<INSERT-ADMIN-PRODUCTS-COMPONENT-HERE />}
 				>
@@ -56,11 +56,8 @@ root.render(
 						element={<INSERT-ADMIN-EDIT-PRODUCT-COMPONENT-HERE />}
 					/>
 				</Route> */}
-				{/* <Route
-					path="colours"
-					element={<INSERT-ADMIN-COLOURS-COMPONENT-HERE />}
-				/> */}
-			</Route>
-		</Routes>
-	</BrowserRouter>
+        <Route path="colours" element={<Colours />} />
+      </Route>
+    </Routes>
+  </BrowserRouter>
 );
