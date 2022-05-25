@@ -6,28 +6,28 @@ import App from "./App";
 import Home from "./components/Home.js";
 
 import Admin from "./components/Admin/Admin.js";
-import Products from "./components/Admin/AdminComponents/Products/Products.js";
-import Colours from "./components/Admin/AdminComponents/Dashboard/Colours/Colours";
+import Products from "./components/Admin/AdminComponents/Products.js";
+import Colours from "./components/Admin/AdminComponents/Colours.js";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<BrowserRouter>
-		<Routes>
-			<Route path="/" element={<App />}>
-				<Route index element={<Home />} />
-				{/* <Route
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        {/* <Route
 					path="product/:productId"
 					element={<INSERT-PRODUCT-PAGE-COMPONENT-HERE />}
 				/> */}
-				{/* <Route
+        {/* <Route
 					path="cart"
 					element={<INSERT-CART-COMPONENT-HERE />}
 				/> */}
-				{/* <Route
+        {/* <Route
 					path="checkout"
 					element={<INSERT-CHECKOUT-COMPONENT-HERE />}
 				/> */}
-				{/* <Route
+        {/* <Route
 					path="profile"
 					element={<INSERT-PROFILE-COMPONENT-HERE />}
 				/> */}
