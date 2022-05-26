@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { useState, useEffect } from 'react';
-import { Box, Typography, Checkbox, Tooltip } from '@mui/material';
-import { SquareRounded } from '@mui/icons-material';
-import { BACKEND_URL } from '../../store.js';
+import axios from "axios";
+import { useState, useEffect } from "react";
+import { Box, Typography, Checkbox, Tooltip } from "@mui/material";
+import { SquareRounded } from "@mui/icons-material";
+import { BACKEND_URL } from "../../../store.js";
 
 export default function AvailableColourDisplay({
 	productId,
@@ -42,7 +42,7 @@ export default function AvailableColourDisplay({
 							sx={{
 								px: 1,
 								color: colour.code,
-								'&.Mui-checked': {
+								"&.Mui-checked": {
 									color: colour.code,
 								},
 							}}
@@ -58,7 +58,7 @@ export default function AvailableColourDisplay({
 			<Typography variant="body1" color="text.secondary">
 				{selectedColour
 					? `Available colours (selected: ${selectedColour})`
-					: 'Available colours (click to select)'}
+					: "Available colours (click to select)"}
 			</Typography>
 			<AvailableColours />
 		</Box>
