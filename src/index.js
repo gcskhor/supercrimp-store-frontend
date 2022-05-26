@@ -3,12 +3,14 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./index.css";
 import App from "./App";
-import Home from "./components/Home.js";
+import Home from "./components/Customer/Home.js";
+import Product from "./components/Customer/Product.js";
 
 import Admin from "./components/Admin/Admin.js";
 import Products from "./components/Admin/AdminComponents/Products.js";
-import Colours from "./components/Admin/AdminComponents/Colours.js";
+import AddProduct from "./components/Admin/AdminComponents/Products/AddProduct.js";
 import EditProduct from "./components/Admin/AdminComponents/Products/EditProduct.js";
+import Colours from "./components/Admin/AdminComponents/Colours.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -16,10 +18,7 @@ root.render(
     <Routes>
       <Route path="/" element={<App />}>
         <Route index element={<Home />} />
-        {/* <Route
-					path="product/:productId"
-					element={<INSERT-PRODUCT-PAGE-COMPONENT-HERE />}
-				/> */}
+        <Route path="product/:productId" element={<Product />} />
         {/* <Route
 					path="cart"
 					element={<INSERT-CART-COMPONENT-HERE />}
@@ -45,10 +44,7 @@ root.render(
         {/* <Route path="login" element={<INSERT-ADMIN-LOGIN-COMPONENT-HERE />} /> */}
         <Route path="products" element={<Products />} />
         <Route path="product">
-          {/* <Route
-            path="add"
-            element={<INSERT-ADMIN-ADD-PRODUCT-COMPONENT-HERE />}
-          /> */}
+          <Route path="add" element={<AddProduct />} />
           <Route path=":productId/edit" element={<EditProduct />} />
         </Route>
         <Route path="colours" element={<Colours />} />

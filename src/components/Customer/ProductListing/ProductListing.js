@@ -1,8 +1,8 @@
-import axios from 'axios';
-import { useEffect, useState } from 'react';
-import { Container, Grid } from '@mui/material';
-import { BACKEND_URL } from '../../store.js';
-import ProductSummary from './ProductSummary.js';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Container, Grid } from "@mui/material";
+import { BACKEND_URL } from "../../../store.js";
+import ProductSummary from "./ProductSummary.js";
 
 export default function ProductListing() {
 	const [products, setProducts] = useState([]);
