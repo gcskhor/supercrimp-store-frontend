@@ -1,16 +1,23 @@
 import React from "react";
 import { DataGrid } from "@mui/x-data-grid";
-import { IconButton, Box } from "@mui/material";
+import { IconButton, Box, Checkbox } from "@mui/material";
 import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
+import { Link } from "react-router-dom";
 
-export default function DataTable({ products }) {
+export default function ProductTable({
+  products,
+  setOpenEditModal,
+  setOpenDeleteModal,
+}) {
   const handleClickEdit = (event, cellValues) => {
-    console.log(cellValues.row);
+    // console.log(cellValues);
+    // setOpenEditModal(true);
   };
 
   const handleClickDelete = (event, cellValues) => {
     console.log(cellValues.row);
+    setOpenDeleteModal(true);
   };
 
   const columns = [
@@ -24,6 +31,17 @@ export default function DataTable({ products }) {
       width: 130,
     },
     {
+      field: "available",
+      headerName: "Available",
+      renderCell: (cellValues) => {
+        return (
+          <Box>
+            <Checkbox disabled checked={cellValues.row.available} />
+          </Box>
+        );
+      },
+    },
+    {
       field: "buttons",
       headerName: "Actions",
       renderCell: (cellValues) => {
@@ -33,6 +51,8 @@ export default function DataTable({ products }) {
               aria-label="edit"
               variant="contained"
               color="primary"
+              component={Link}
+              to={`/admin/product/${cellValues.row.id}/edit`}
               onClick={(event) => {
                 handleClickEdit(event, cellValues);
               }}
