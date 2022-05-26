@@ -1,11 +1,11 @@
-import BannerCarousel from './BannerCarousel/BannerCarousel.js';
-import ProductListing from './ProductListing/ProductListing.js';
+import BannerCarousel from "./BannerCarousel/BannerCarousel.js";
+import AllProducts from "./AllProducts/AllProducts.js";
 
 export default function Home() {
 	return (
 		<>
 			<BannerCarousel />
-			<ProductListing />
+			<AllProducts />
 		</>
 	);
 }

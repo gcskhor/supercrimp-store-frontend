@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 import {
 	Grid,
 	Card,
@@ -7,45 +7,35 @@ import {
 	CardActions,
 	Typography,
 	Button,
-} from '@mui/material';
+} from "@mui/material";
 
-import AvailableColourDisplay from './AvailableColourDisplay.js';
+import Price from "../ProductDetails/Price.js";
+import AvailableColourDisplay from "../ProductDetails/AvailableColourDisplay.js";
 
 export default function ProductSummary({ productDetails }) {
 	const [selectedColour, setSelectedColour] = useState(null);
 
-	const { id, name, usualPrice, currentPrice, colours } = productDetails;
-	const colourIds = colours.map((colour) => colour.id);
-
-	function UsualPrice() {
-		return (
-			<Typography variant="subtitle1" color="text.secondary">
-				(Usual price: S${usualPrice})
-			</Typography>
-		);
-	}
+	const { id, name } = productDetails;
 
 	return (
-		<Grid item xs={5}>
+		<Grid item xs={6}>
 			<Card sx={{ px: 2, pt: 3, pb: 5 }}>
 				{/* <CardMedia component="img" image={image} /> */}
 				<CardContent>
-					<Typography gutterBottom variant="h5">
+					<Typography variant="h4" gutterBottom>
 						{name}
 					</Typography>
-					<Typography variant="h6">S${currentPrice}</Typography>
-					{usualPrice !== currentPrice && <UsualPrice />}
+					<Price product={productDetails} />
 					<AvailableColourDisplay
-						productId={id}
-						productColours={colourIds}
+						productDetails={productDetails}
 						selectedColour={selectedColour}
 						setSelectedColour={setSelectedColour}
 					/>
 				</CardContent>
 				<CardActions
 					sx={{
-						flexDirection: 'column',
-						alignItems: 'flex-start',
+						flexDirection: "column",
+						alignItems: "flex-start",
 						px: 2,
 					}}
 				>
