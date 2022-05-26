@@ -8,6 +8,7 @@ import Home from "./components/Home.js";
 import Admin from "./components/Admin/Admin.js";
 import Products from "./components/Admin/AdminComponents/Products.js";
 import Colours from "./components/Admin/AdminComponents/Colours.js";
+import EditProduct from "./components/Admin/AdminComponents/Products/EditProduct.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -43,19 +44,13 @@ root.render(
       <Route path="/admin" element={<Admin />}>
         {/* <Route path="login" element={<INSERT-ADMIN-LOGIN-COMPONENT-HERE />} /> */}
         <Route path="products" element={<Products />} />
-        {/* <Route
-					path="product"
-					element={<INSERT-ADMIN-PRODUCTS-COMPONENT-HERE />}
-				>
-					<Route
-						path="add"
-						element={<INSERT-ADMIN-ADD-PRODUCT-COMPONENT-HERE />}
-					/>
-					<Route
-						path=":productId/edit"
-						element={<INSERT-ADMIN-EDIT-PRODUCT-COMPONENT-HERE />}
-					/>
-				</Route> */}
+        <Route path="product">
+          {/* <Route
+            path="add"
+            element={<INSERT-ADMIN-ADD-PRODUCT-COMPONENT-HERE />}
+          /> */}
+          <Route path=":productId/edit" element={<EditProduct />} />
+        </Route>
         <Route path="colours" element={<Colours />} />
       </Route>
     </Routes>
