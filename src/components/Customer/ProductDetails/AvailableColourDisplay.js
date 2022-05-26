@@ -5,8 +5,7 @@ import { SquareRounded } from "@mui/icons-material";
 import { BACKEND_URL } from "../../../store.js";
 
 export default function AvailableColourDisplay({
-	productId,
-	productColours,
+	productDetails,
 	selectedColour,
 	setSelectedColour,
 }) {
@@ -14,6 +13,8 @@ export default function AvailableColourDisplay({
 	// eg if red, black and yellow are available, but this product only has red and black, should show all 3 colours but with yellow disabled
 
 	const [availableColours, setAvailableColours] = useState([]);
+	const { id: productId, colours } = productDetails;
+	const productColours = colours.map((colour) => colour.id);
 
 	useEffect(() => {
 		axios.get(`${BACKEND_URL}/colours`).then((response) => {

@@ -2,9 +2,9 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
 import { BACKEND_URL } from "../../../store.js";
-import ProductSummary from "./ProductSummary.js";
+import ProductCard from "./ProductCard.js";
 
-export default function ProductListing() {
+export default function AllProducts() {
 	const [products, setProducts] = useState([]);
 
 	useEffect(() => {
@@ -13,9 +13,9 @@ export default function ProductListing() {
 		});
 	}, []);
 
-	function ProductSummaryList() {
+	function ProductsList() {
 		return products.map((product) => (
-			<ProductSummary productDetails={product} key={`${product.id}`} />
+			<ProductCard productDetails={product} key={`${product.id}`} />
 		));
 	}
 
@@ -28,7 +28,7 @@ export default function ProductListing() {
 				justifyContent="center"
 				alignItems="flex-start"
 			>
-				<ProductSummaryList />
+				<ProductsList />
 			</Grid>
 		</Container>
 	);
