@@ -9,13 +9,24 @@ import {
 	Button,
 } from "@mui/material";
 
+import { useCartContext } from "../CartContext.js";
+
 import Price from "../ProductDetails/Price.js";
 import AvailableColourDisplay from "../ProductDetails/AvailableColourDisplay.js";
 
 export default function ProductSummary({ productDetails }) {
+	const {
+		cartDispatch,
+		dispatchHelpers: [, addItemToCart],
+	} = useCartContext();
 	const [selectedColour, setSelectedColour] = useState(null);
-
 	const { id, name } = productDetails;
+
+	const addToCart = () => {
+		// TODO: add error msg for when no colour is selected
+		cartDispatch(addItemToCart(productDetails, selectedColour.id, 1));
+		setSelectedColour(null);
+	};
 
 	return (
 		<Grid item xs={6}>
@@ -42,7 +53,7 @@ export default function ProductSummary({ productDetails }) {
 					<Button size="small" href={`/product/${id}`} sx={{ mb: 2 }}>
 						View details
 					</Button>
-					<Button size="small" variant="contained">
+					<Button size="small" variant="contained" onClick={addToCart}>
 						Add to Cart
 					</Button>
 				</CardActions>
