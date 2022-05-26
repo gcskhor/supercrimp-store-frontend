@@ -23,7 +23,10 @@ export default function AvailableColourDisplay({
 	}, []);
 
 	const updateSelectedColour = (e) => {
-		const clickedColour = e.target.value;
+		const clickedColourName = e.target.value;
+		const clickedColour = availableColours.filter(
+			(colour) => colour.name === clickedColourName
+		)[0];
 		clickedColour === selectedColour
 			? setSelectedColour(null) // unselect colour
 			: setSelectedColour(clickedColour); // set as selected colour
@@ -36,7 +39,7 @@ export default function AvailableColourDisplay({
 					<span>
 						<Checkbox
 							value={colour.name}
-							checked={colour.name === selectedColour}
+							checked={colour.name === selectedColour?.name}
 							onChange={updateSelectedColour}
 							icon={<SquareRounded />}
 							disabled={!productColours.includes(colour.id)}
@@ -58,7 +61,7 @@ export default function AvailableColourDisplay({
 		<Box mt={2}>
 			<Typography variant="body1" color="text.secondary">
 				{selectedColour
-					? `Available colours (selected: ${selectedColour})`
+					? `Available colours (selected: ${selectedColour.name})`
 					: "Available colours (click to select)"}
 			</Typography>
 			<AvailableColours />
