@@ -22,7 +22,7 @@ export default function EditColourDialog() {
   const [selectedColour, setSelectedColour] = selectedColourContext;
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
-  const [available, setAvailable] = useState(false);
+  const [available, setAvailable] = useState();
 
   useEffect(() => {
     setName(selectedColour.name);
@@ -65,7 +65,7 @@ export default function EditColourDialog() {
             type="text"
             fullWidth
             variant="standard"
-            value={selectedColour.name}
+            value={name}
             onChange={(event) => setName(event.target.value)}
           />
           <TextField
@@ -76,7 +76,7 @@ export default function EditColourDialog() {
             type="text"
             fullWidth
             variant="standard"
-            value={selectedColour.code}
+            value={code}
             onChange={(event) => setCode(event.target.value)}
           />
           <FormGroup>
@@ -85,7 +85,7 @@ export default function EditColourDialog() {
                 <Checkbox
                   label="Available"
                   labelplacement="start"
-                  checked={selectedColour.available}
+                  checked={available}
                   onChange={(event) => setAvailable(event.target.checked)}
                 />
               }
