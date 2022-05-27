@@ -6,6 +6,7 @@ import { ColourContext } from "./Colours/ColourContext.js";
 import ColoursTable from "./Colours/ColoursTable.js";
 import EditColourDialog from "./Colours/EditColourDialog.js";
 import AddColourDialog from "./Colours/AddColourDialog.js";
+import DeleteColourDialog from "./Colours/DeleteColourDialog";
 
 export function reloadColours(setColours, BACKEND_URL) {
   return axios
@@ -26,14 +27,6 @@ export default function Colours() {
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
 
   useEffect(() => {
-    // axios
-    //   .get(`${BACKEND_URL}/admin/colours`)
-    //   .then((response) => {
-    //     setColours(response.data);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err);
-    //   });
     reloadColours(setColours, BACKEND_URL);
   }, []);
   return (
@@ -47,6 +40,7 @@ export default function Colours() {
           openDeleteDialogContext: [openDeleteDialog, setOpenDeleteDialog],
         }}
       >
+        <h2>Colours</h2>
         <ColoursTable />
         <Button
           fullWidth
@@ -59,6 +53,7 @@ export default function Colours() {
         </Button>
         {openAddDialog && <AddColourDialog />}
         {openEditDialog && selectedColour && <EditColourDialog />}
+        {openDeleteDialog && selectedColour && <DeleteColourDialog />}
       </ColourContext.Provider>
     </Box>
   );
