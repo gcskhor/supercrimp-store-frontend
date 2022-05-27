@@ -5,14 +5,18 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
-export default function ProductTable({ products, setOpenDeleteModal }) {
+export default function ProductTable({
+  products,
+  setOpenDeleteProductDialog,
+  setSelectedProduct,
+}) {
   const handleClickDelete = (event, cellValues) => {
-    console.log(cellValues.row);
-    setOpenDeleteModal(true);
+    setOpenDeleteProductDialog(true);
+    setSelectedProduct(cellValues.row);
   };
 
   const columns = [
-    { field: "id", headerName: "ID", width: 50 },
+    { field: "id", headerName: "ID", width: 75 },
     { field: "name", headerName: "Name", width: 150 },
     { field: "currentPrice", headerName: "Current Price", width: 130 },
     {
@@ -65,12 +69,19 @@ export default function ProductTable({ products, setOpenDeleteModal }) {
   ];
 
   return (
-    <div style={{ height: 400, width: "100%" }}>
+    <div style={{ height: 600, width: "100%" }}>
       <DataGrid
         rows={products}
         columns={columns}
         pageSize={10}
-        rowsPerPageOptions={[7]}
+        rowsPerPageOptions={[10]}
+        autoPageSize
+        pagination
+        initialState={{
+          sorting: {
+            sortModel: [{ field: "id", sort: "asc" }],
+          },
+        }}
       />
     </div>
   );
