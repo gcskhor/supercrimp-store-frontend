@@ -48,6 +48,17 @@ root.render(
           <Route path=":productId/edit" element={<EditProduct />} />
         </Route>
         <Route path="colours" element={<Colours />} />
+        {/* <Route path="colour">
+          <Route path=":colourId/edit" element={<EditColour />} />
+        </Route> */}
+        <Route
+          path="*" // TODO: create 404 component to handle this
+          element={
+            <main>
+              <p>There's nothing here!</p>
+            </main>
+          }
+        />
       </Route>
     </Routes>
   </BrowserRouter>
