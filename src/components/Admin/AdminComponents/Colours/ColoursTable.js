@@ -6,12 +6,16 @@ import DeleteIcon from "@mui/icons-material/Delete";
 import { ColourContext } from "./ColourContext.js";
 
 export default function ColoursTable() {
-  const { coloursContext, openEditDialogContext, selectedColourContext } =
-    useContext(ColourContext);
-  const [colours, setColours] = coloursContext;
-  const [selectedColour, setSelectedColour] = selectedColourContext;
-
-  const [openEditDialog, setOpenEditDialog] = openEditDialogContext;
+  const {
+    coloursContext,
+    openEditDialogContext,
+    selectedColourContext,
+    openDeleteDialogContext,
+  } = useContext(ColourContext);
+  const [colours] = coloursContext;
+  const [, setSelectedColour] = selectedColourContext;
+  const [, setOpenEditDialog] = openEditDialogContext;
+  const [, setOpenDeleteDialog] = openDeleteDialogContext;
 
   const handleClickEdit = (event, colour) => {
     console.log(colour);
@@ -19,8 +23,13 @@ export default function ColoursTable() {
     setSelectedColour(colour);
   };
 
+  const handleClickDelete = (event, colour) => {
+    setOpenDeleteDialog(true);
+    setSelectedColour(colour);
+  };
+
   const columns = [
-    { field: "id", headerName: "ID", width: 50 },
+    { field: "id", headerName: "ID", width: 75 },
     { field: "name", headerName: "Name", width: 150 },
     { field: "code", headerName: "Colour Code", width: 150 },
     {
@@ -55,7 +64,7 @@ export default function ColoursTable() {
               variant="contained"
               color="primary"
               onClick={(event) => {
-                // handleClickDelete(event, cellValues);
+                handleClickDelete(event, cellValues.row);
               }}
             >
               <DeleteIcon />
@@ -72,7 +81,14 @@ export default function ColoursTable() {
         rows={colours}
         columns={columns}
         pageSize={10}
-        rowsPerPageOptions={[7]}
+        rowsPerPageOptions={[10]}
+        autoPageSize
+        pagination
+        initialState={{
+          sorting: {
+            sortModel: [{ field: "id", sort: "asc" }],
+          },
+        }}
       />
     </Box>
   );

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import {
   Button,
   Dialog,
@@ -11,32 +11,25 @@ import {
   FormControlLabel,
 } from "@mui/material";
 import { ColourContext } from "./ColourContext.js";
-import axios from "axios";
 import { reloadColours } from "../Colours.js";
 import { BACKEND_URL } from "../../../../store.js";
+import axios from "axios";
 
-export default function EditColourDialog() {
-  const { openEditDialogContext, selectedColourContext, coloursContext } =
-    useContext(ColourContext);
-  const [openEditDialog, setOpenEditDialog] = openEditDialogContext;
-  const [, setColours] = coloursContext;
-  const [selectedColour, setSelectedColour] = selectedColourContext;
-  const [id, setId] = useState("");
+export default function AddColourDialog() {
+  const [id] = useState("");
   const [name, setName] = useState("");
   const [code, setCode] = useState("");
   const [available, setAvailable] = useState(false);
+  const { openAddDialogContext, coloursContext } = useContext(ColourContext);
+  const [openAddDialog, setOpenAddDialog] = openAddDialogContext;
+  const [, setColours] = coloursContext;
 
   useEffect(() => {
-    setId(selectedColour.id);
-    setName(selectedColour.name);
-    setCode(selectedColour.code);
-    setAvailable(selectedColour.available);
-
     // reload colours on the colours page on dialog close
     return () => {
       reloadColours(setColours, BACKEND_URL);
     };
-  }, [selectedColour]);
+  }, []);
 
   const dataToServer = {
     id: id,
@@ -45,37 +38,26 @@ export default function EditColourDialog() {
     available: available,
   };
 
-  const handleSubmit = () => {
-    console.log("closing edit dialog");
+  const handleClose = () => {
+    console.log("closing");
+    setOpenAddDialog(false);
+  };
 
+  const handleSubmit = () => {
     axios
-      .post(
-        `${BACKEND_URL}/admin/colour/${selectedColour.id}/edit`,
-        dataToServer
-      )
+      .post(`${BACKEND_URL}/admin/colour/add`, dataToServer)
       .then((response) => {
         console.log(response.data);
-        setOpenEditDialog(false);
-        setSelectedColour(null);
+        handleClose();
       })
       .catch((err) => {
         console.log(err);
       });
   };
 
-  const handleClose = () => {
-    setOpenEditDialog(false);
-    setSelectedColour(null);
-  };
-
   return (
     <div>
-      <Dialog
-        open={openEditDialog}
-        onClose={(event) => {
-          handleClose();
-        }}
-      >
+      <Dialog open={openAddDialog} onClose={handleClose}>
         <DialogTitle>Edit Colour</DialogTitle>
         <DialogContent>
           <TextField
