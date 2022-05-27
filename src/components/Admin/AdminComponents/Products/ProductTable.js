@@ -5,16 +5,7 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import { Link } from "react-router-dom";
 
-export default function ProductTable({
-  products,
-  setOpenEditModal,
-  setOpenDeleteModal,
-}) {
-  const handleClickEdit = (event, cellValues) => {
-    // console.log(cellValues);
-    // setOpenEditModal(true);
-  };
-
+export default function ProductTable({ products, setOpenDeleteModal }) {
   const handleClickDelete = (event, cellValues) => {
     console.log(cellValues.row);
     setOpenDeleteModal(true);
@@ -53,9 +44,6 @@ export default function ProductTable({
               color="primary"
               component={Link}
               to={`/admin/product/${cellValues.row.id}/edit`}
-              onClick={(event) => {
-                handleClickEdit(event, cellValues);
-              }}
             >
               <EditIcon />
             </IconButton>
@@ -81,8 +69,8 @@ export default function ProductTable({
       <DataGrid
         rows={products}
         columns={columns}
-        pageSize={5}
-        rowsPerPageOptions={[5]}
+        pageSize={10}
+        rowsPerPageOptions={[7]}
       />
     </div>
   );
