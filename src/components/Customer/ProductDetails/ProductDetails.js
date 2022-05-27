@@ -1,71 +1,98 @@
-import { Box, Typography, Button, Stack } from "@mui/material";
+import { Box, Typography, Stack } from "@mui/material";
 
 import Price from "./Price.js";
 import AvailableColourDisplay from "./AvailableColourDisplay.js";
+import AddToCartButton from "./AddToCartButton.js";
 
 export default function ProductDetails({
 	product,
 	selectedColour,
 	setSelectedColour,
 }) {
-	// component returns: product description, features, outer dimensions, mounting and materials
+	const DESCRIPTION = product.description;
+	const FEATURES = product.features;
+	const OUTER_DIMENSIONS = product.outerDimensions;
+	const MOUNTING = product.mounting;
+	const MATERIALS = product.materials;
+
+	const isBlank = (info) => info === "";
+	const isTotallyEmpty =
+		isBlank(DESCRIPTION) &&
+		isBlank(FEATURES) &&
+		isBlank(OUTER_DIMENSIONS) &&
+		isBlank(MOUNTING) &&
+		isBlank(MATERIALS);
+
+	function Header({ title }) {
+		return (
+			<Typography variant="button" fontWeight="bold">
+				{title}
+			</Typography>
+		);
+	}
+
+	function Text({ info }) {
+		return (
+			<Typography variant="body1" gutterbottom="true">
+				{info}
+			</Typography>
+		);
+	}
+
 	function ProductInfo() {
 		return (
-			<Stack spacing={3} my={3} pb={3} borderBottom="1px solid #cacaca">
-				<Box>
-					<Typography variant="body1" gutterbottom>
-						{product.description}
-					</Typography>
-				</Box>
-				<Box>
-					<Typography variant="button" fontWeight="bold">
-						Features
-					</Typography>
-					<Typography variant="body1" gutterbottom>
-						{product.features}
-					</Typography>
-				</Box>
-				<Box>
-					<Typography variant="button" fontWeight="bold">
-						Outer Dimensions
-					</Typography>
-					<Typography variant="body1" gutterbottom>
-						{product.outerDimensions}
-					</Typography>
-				</Box>
-				<Box>
-					<Typography variant="button" fontWeight="bold">
-						Mounting
-					</Typography>
-					<Typography variant="body1" gutterbottom>
-						{product.mounting}
-					</Typography>
-				</Box>
-				<Box>
-					<Typography variant="button" fontWeight="bold">
-						Materials
-					</Typography>
-					<Typography variant="body1" gutterbottom>
-						{product.materials}
-					</Typography>
-				</Box>
+			<Stack spacing={3} py={1}>
+				{!isBlank(DESCRIPTION) && (
+					<Box>
+						<Text info={DESCRIPTION} />
+					</Box>
+				)}
+				{!isBlank(FEATURES) && (
+					<Box>
+						<Header title="Features" />
+						<Text info={FEATURES} />
+					</Box>
+				)}
+				{!isBlank(OUTER_DIMENSIONS) && (
+					<Box>
+						<Header title="Outer Dimensions" />
+						<Text info={OUTER_DIMENSIONS} />
+					</Box>
+				)}
+				{!isBlank(MOUNTING) && (
+					<Box>
+						<Header title="Mounting" />
+						<Text info={MOUNTING} />
+					</Box>
+				)}
+				{!isBlank(MATERIALS) && (
+					<Box>
+						<Header title="Materials" />
+						<Text info={MATERIALS} />
+					</Box>
+				)}
 			</Stack>
 		);
 	}
 
+	const styles = { p: { xs: 0.5, sm: 1, md: 2 }, m: { xs: 0.5, sm: 1, md: 2 } };
+
 	return (
-		<Box sx={{ p: { xs: 0.5, sm: 1, md: 2 }, m: { xs: 0.5, sm: 1, md: 2 } }}>
+		<Stack spacing={3} sx={styles}>
 			<Typography variant="h3">{product.name}</Typography>
 			<Price product={product} />
-			<ProductInfo />
+			{!isTotallyEmpty && <ProductInfo />}
+			<hr style={{ border: 0, height: 1, backgroundColor: "#cacaca" }} />
 			<AvailableColourDisplay
 				productDetails={product}
 				selectedColour={selectedColour}
 				setSelectedColour={setSelectedColour}
 			/>
-			<Button size="small" variant="contained" sx={{ my: 4 }}>
-				Add to Cart
-			</Button>
-		</Box>
+			<AddToCartButton
+				productDetails={product}
+				selectedColour={selectedColour}
+				setSelectedColour={setSelectedColour}
+			/>
+		</Stack>
 	);
 }
