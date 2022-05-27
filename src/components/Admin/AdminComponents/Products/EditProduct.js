@@ -18,18 +18,28 @@ export default function EditProduct() {
   const [id, setId] = useState("");
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
+  const [features, setFeatures] = useState("");
+  const [outerDimensions, setOuterDimensions] = useState("");
+  const [mounting, setMounting] = useState("");
+  const [materials, setMaterials] = useState("");
   const [usualPrice, setUsualPrice] = useState("");
   const [currentPrice, setCurrentPrice] = useState("");
   const [available, setAvailable] = useState();
   const [colours, setColours] = useState([]);
+  const [allColours, setAllColours] = useState([]);
 
   const dataToServer = {
     id: id,
     name: name,
     description: description,
+    features: features,
+    outerDimensions: outerDimensions,
+    mounting: mounting,
+    materials: materials,
     usualPrice: usualPrice,
     currentPrice: currentPrice,
     available: available,
+    colours: colours,
   };
 
   useEffect(() => {
@@ -42,6 +52,10 @@ export default function EditProduct() {
           id,
           name,
           description,
+          features,
+          outerDimensions,
+          mounting,
+          materials,
           usualPrice,
           currentPrice,
           available,
@@ -50,10 +64,24 @@ export default function EditProduct() {
         setId(id);
         setName(name);
         setDescription(description);
+        setFeatures(features);
+        setOuterDimensions(outerDimensions);
+        setMounting(mounting);
+        setMaterials(materials);
         setUsualPrice(usualPrice);
         setCurrentPrice(currentPrice);
         setAvailable(available);
         setColours(colours);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+
+    axios
+      .get(`${BACKEND_URL}/admin/colours`)
+      .then((response) => {
+        console.log(response.data);
+        setAllColours(response.data);
       })
       .catch((err) => {
         console.log(err);
@@ -71,6 +99,21 @@ export default function EditProduct() {
       });
   };
 
+  const handleColourOnChange = (event, actionableColour) => {
+    if (event.target.checked) {
+      setColours((colours) => [...colours, actionableColour]);
+    } else {
+      const coloursCopy = [...colours];
+      setColours(
+        coloursCopy.filter((colour) => colour.id !== actionableColour.id)
+      );
+    }
+  };
+
+  const isChecked = (colour) => {
+    return colours.filter((col) => col.id === colour.id).length > 0;
+  };
+
   return (
     product && (
       <Box component="form">
@@ -85,16 +128,64 @@ export default function EditProduct() {
           value={name}
         />
         <TextField
-          label="Product Description"
-          placeholder="Product Description"
+          label="Description"
+          placeholder="Description"
           variant="filled"
           multiline
-          rows={7}
+          rows={4}
           fullWidth
           onChange={(event) => {
             setDescription(event.target.value);
           }}
           value={description}
+        />
+        <TextField
+          label="Features"
+          placeholder="Features"
+          variant="filled"
+          multiline
+          rows={2}
+          fullWidth
+          onChange={(event) => {
+            setFeatures(event.target.value);
+          }}
+          value={features}
+        />
+        <TextField
+          label="Outer Dimensions"
+          placeholder="Outer Dimensions"
+          variant="filled"
+          multiline
+          rows={1}
+          fullWidth
+          onChange={(event) => {
+            setOuterDimensions(event.target.value);
+          }}
+          value={outerDimensions}
+        />
+        <TextField
+          label="Mounting"
+          placeholder="Mounting"
+          variant="filled"
+          multiline
+          rows={4}
+          fullWidth
+          onChange={(event) => {
+            setMounting(event.target.value);
+          }}
+          value={mounting}
+        />
+        <TextField
+          label="Materials"
+          placeholder="Materials"
+          variant="filled"
+          multiline
+          rows={4}
+          fullWidth
+          onChange={(event) => {
+            setMaterials(event.target.value);
+          }}
+          value={materials}
         />
         <TextField
           label="Usual Price (SGD)"
@@ -129,7 +220,28 @@ export default function EditProduct() {
             label="Available"
           />
         </FormGroup>
-        <Box>Colours</Box>
+        <Box>
+          <Box>Colours</Box>
+          {allColours.map((colour) => {
+            return (
+              <FormGroup key={colour.name}>
+                <FormControlLabel
+                  control={
+                    <Checkbox
+                      label={colour.name}
+                      labelplacement="start"
+                      checked={isChecked(colour)}
+                      onChange={(event) => {
+                        handleColourOnChange(event, colour);
+                      }}
+                    />
+                  }
+                  label={colour.name}
+                />
+              </FormGroup>
+            );
+          })}
+        </Box>
 
         <Button
           fullWidth
