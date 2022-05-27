@@ -1,6 +1,6 @@
 import axios from "axios";
-import React, { useContext, useReducer } from "react";
-import { BACKEND_URL } from "../../store.js";
+import React, { useContext, useEffect, useReducer } from "react";
+// import { BACKEND_URL } from "../../store.js";
 
 axios.defaults.withCredentials = true;
 
@@ -14,10 +14,9 @@ const ACTIONS = {
 const cartReducer = (state, action) => {
 	switch (action.type) {
 		case ACTIONS.RETRIEVE:
-			return [action.payload.cart];
+			return action.payload.cart;
 		case ACTIONS.ADD:
 			// TODO: increase quantity instead of adding same item
-			console.log("state in add reducer:", state);
 			return [...state, action.payload];
 		// case ACTIONS.EDIT:
 		// return { ...state, end: action.payload.endDate };
@@ -30,7 +29,6 @@ const cartReducer = (state, action) => {
 
 const retrieveCart = () => {
 	const cart = JSON.parse(localStorage.getItem("cart"));
-	console.log("retrieve cart: ", cart);
 	return {
 		type: ACTIONS.RETRIEVE,
 		payload: { cart },
@@ -42,14 +40,13 @@ const addItemToCart = (product, colourId, quantity) => {
 	const item = { productId: product.id, colourId, quantity, subtotalCost };
 
 	const cart = JSON.parse(localStorage.getItem("cart"));
+
 	if (!cart) {
 		localStorage.setItem("cart", JSON.stringify([item]));
 	} else {
 		cart.push(item);
 		localStorage.setItem("cart", JSON.stringify(cart));
 	}
-	console.log("add item - item: ", item);
-	console.log("add item - cart: ", cart);
 
 	return {
 		type: ACTIONS.ADD,
@@ -78,6 +75,10 @@ export function useCartContext() {
 
 export function CartContextProvider({ children }) {
 	const [cart, cartDispatch] = useReducer(cartReducer, []);
+
+	useEffect(() => {
+		cartDispatch(retrieveCart());
+	}, []);
 
 	return (
 		<CartContext.Provider

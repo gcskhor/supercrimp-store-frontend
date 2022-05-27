@@ -9,28 +9,17 @@ import {
 	Button,
 } from "@mui/material";
 
-import { useCartContext } from "../CartContext.js";
-
 import Price from "../ProductDetails/Price.js";
 import AvailableColourDisplay from "../ProductDetails/AvailableColourDisplay.js";
+import AddToCartButton from "../ProductDetails/AddToCartButton.js";
 
 export default function ProductSummary({ productDetails }) {
-	const {
-		cartDispatch,
-		dispatchHelpers: [, addItemToCart],
-	} = useCartContext();
 	const [selectedColour, setSelectedColour] = useState(null);
 	const { id, name } = productDetails;
 
-	const addToCart = () => {
-		// TODO: add error msg for when no colour is selected
-		cartDispatch(addItemToCart(productDetails, selectedColour.id, 1));
-		setSelectedColour(null);
-	};
-
 	return (
-		<Grid item xs={6}>
-			<Card sx={{ px: 2, pt: 3, pb: 5 }}>
+		<Grid item xs={10} md={6}>
+			<Card sx={{ px: 2, py: 3 }}>
 				{/* <CardMedia component="img" image={image} /> */}
 				<CardContent>
 					<Typography variant="h4" gutterBottom>
@@ -50,12 +39,15 @@ export default function ProductSummary({ productDetails }) {
 						px: 2,
 					}}
 				>
-					<Button size="small" href={`/product/${id}`} sx={{ mb: 2 }}>
+					<Button size="small" href={`/product/${id}`}>
 						View details
 					</Button>
-					<Button size="small" variant="contained" onClick={addToCart}>
-						Add to Cart
-					</Button>
+
+					<AddToCartButton
+						productDetails={productDetails}
+						selectedColour={selectedColour}
+						setSelectedColour={setSelectedColour}
+					/>
 				</CardActions>
 			</Card>
 		</Grid>
