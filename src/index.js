@@ -15,21 +15,20 @@ import Colours from "./components/Admin/AdminComponents/Colours.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-	<BrowserRouter>
-		<Routes>
-			<Route path="/" element={<App />}>
-				<Route index element={<Home />} />
-				<Route path="product/:productId" element={<Product />} />
-				<Route path="cart" element={<Cart />} />
-				{/* <Route
+  <BrowserRouter>
+    <Routes>
+      <Route path="/" element={<App />}>
+        <Route index element={<Home />} />
+        <Route path="product/:productId" element={<Product />} />
+        <Route path="cart" element={<Cart />} />
+        {/* <Route
 					path="checkout"
 					element={<INSERT-CHECKOUT-COMPONENT-HERE />}
 				/> */}
-				{/* <Route
+        {/* <Route
 					path="profile"
 					element={<INSERT-PROFILE-COMPONENT-HERE />}
 				/> */}
-<<<<<<< HEAD
         <Route
           path="*" // TODO: create 404 component to handle this
           element={
@@ -47,40 +46,7 @@ root.render(
           <Route path=":productId/edit" element={<EditProduct />} />
         </Route>
         <Route path="colours" element={<Colours />} />
-        {/* <Route path="colour">
-          <Route path=":colourId/edit" element={<EditColour />} />
-        </Route> */}
-        <Route
-          path="*" // TODO: create 404 component to handle this
-          element={
-            <main>
-              <p>There's nothing here!</p>
-            </main>
-          }
-        />
       </Route>
     </Routes>
   </BrowserRouter>
-=======
-				<Route
-					path="*" // TODO: create 404 component to handle this
-					element={
-						<main>
-							<p>There's nothing here!</p>
-						</main>
-					}
-				/>
-			</Route>
-			<Route path="/admin" element={<Admin />}>
-				{/* <Route path="login" element={<INSERT-ADMIN-LOGIN-COMPONENT-HERE />} /> */}
-				<Route path="products" element={<Products />} />
-				<Route path="product">
-					<Route path="add" element={<AddProduct />} />
-					<Route path=":productId/edit" element={<EditProduct />} />
-				</Route>
-				<Route path="colours" element={<Colours />} />
-			</Route>
-		</Routes>
-	</BrowserRouter>
->>>>>>> 75da361c49559eb150aa8c08723960f2a4a54790
 );
