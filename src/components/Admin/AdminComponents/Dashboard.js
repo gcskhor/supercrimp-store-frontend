@@ -1,14 +1,18 @@
 import React, { useState } from "react";
 
+import { useOutlet } from "react-router-dom";
+
 import { Box, CssBaseline, Toolbar } from "@mui/material";
 
 import TopAppBar from "./Dashboard/TopAppBar.js";
 import Drawers from "./Dashboard/Drawers.js";
+import Orders from "./Orders.js";
 
 const drawerWidth = 240;
 
-function Dashboard({ Outlet }) {
+function Dashboard() {
   const [mobileOpen, setMobileOpen] = useState(false);
+  const outlet = useOutlet();
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -36,9 +40,7 @@ function Dashboard({ Outlet }) {
         }}
       >
         <Toolbar />
-        <Box>
-          <Outlet />
-        </Box>
+        <Box>{outlet || <Orders />}</Box>
       </Box>
     </Box>
   );
