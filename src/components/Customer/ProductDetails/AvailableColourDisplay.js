@@ -1,8 +1,6 @@
-import axios from "axios";
-import { useState, useEffect } from "react";
 import { Box, Typography, Checkbox, Tooltip } from "@mui/material";
 import { SquareRounded, DisabledByDefaultRounded } from "@mui/icons-material";
-import { BACKEND_URL } from "../../../store.js";
+import { useInventoryContext } from "../InventoryContext.js";
 
 export default function AvailableColourDisplay({
 	productDetails,
@@ -12,15 +10,10 @@ export default function AvailableColourDisplay({
 	// retrieves all available colours & compares product colours vs available colours
 	// eg if red, black and yellow are available, but this product only has red and black, should show all 3 colours but with yellow disabled
 
-	const [availableColours, setAvailableColours] = useState([]);
+	const { availableColours } = useInventoryContext();
+
 	const { id: productId, colours } = productDetails;
 	const productColours = colours.map((colour) => colour.id);
-
-	useEffect(() => {
-		axios.get(`${BACKEND_URL}/colours`).then((response) => {
-			setAvailableColours(response.data);
-		});
-	}, []);
 
 	const updateSelectedColour = (e) => {
 		const clickedColourName = e.target.value;

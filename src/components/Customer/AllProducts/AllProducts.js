@@ -1,17 +1,10 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { Container, Grid } from "@mui/material";
-import { BACKEND_URL } from "../../../store.js";
+
+import { useInventoryContext } from "../InventoryContext.js";
 import ProductCard from "./ProductCard.js";
 
 export default function AllProducts() {
-	const [products, setProducts] = useState([]);
-
-	useEffect(() => {
-		axios.get(`${BACKEND_URL}/products`).then((response) => {
-			setProducts(response.data);
-		});
-	}, []);
+	const { products } = useInventoryContext();
 
 	function ProductsList() {
 		return products.map((product) => (
