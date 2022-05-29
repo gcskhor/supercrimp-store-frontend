@@ -24,23 +24,18 @@ export default function UserDetailsForm({
 
 	const validateField = (e) => {
 		const { id, value } = e.target;
-		console.log(id, value);
 		switch (id) {
 			case "name":
 				if (value.length >= 3) {
-					console.log("name valid");
 					setInputError({ ...inputError, [id]: false });
 				} else {
-					console.log("name invalid");
 					setInputError({ ...inputError, [id]: true });
 				}
 				break;
 			case "email":
 				if (validator.validate(value)) {
-					console.log("email valid");
 					setInputError({ ...inputError, [id]: false });
 				} else {
-					console.log("email invalid");
 					setInputError({ ...inputError, [id]: true });
 				}
 				break;
@@ -49,16 +44,13 @@ export default function UserDetailsForm({
 				if (8000000 < num && num < 100000000) {
 					setInputError({ ...inputError, [id]: false });
 				} else {
-					console.log("phone invalid");
 					setInputError({ ...inputError, [id]: true });
 				}
 				break;
 			case "addressLine1":
 				if (value.length >= 9) {
-					console.log("address valid");
 					setInputError({ ...inputError, [id]: false });
 				} else {
-					console.log("address invalid");
 					setInputError({ ...inputError, [id]: true });
 				}
 				break;
@@ -67,7 +59,6 @@ export default function UserDetailsForm({
 				if (0 < postcode && postcode < 900000) {
 					setInputError({ ...inputError, [id]: false });
 				} else {
-					console.log("phone invalid");
 					setInputError({ ...inputError, [id]: true });
 				}
 				break;
