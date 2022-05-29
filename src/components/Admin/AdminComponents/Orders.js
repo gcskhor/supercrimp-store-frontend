@@ -4,7 +4,7 @@ import OrdersAccordion from "./Orders/OrdersAccordion.js";
 import { OrdersContext } from "./Orders/OrdersContext.js";
 import { BACKEND_URL } from "../../../store.js";
 
-const loadOrders = async (type, setter) => {
+export const loadOrders = async (type, setter) => {
   return axios
     .get(`${BACKEND_URL}/admin/orders/${type}`)
     .then((response) => {
@@ -32,9 +32,9 @@ export default function Orders() {
         value={{
           pendingOrdersContext: [pendingOrders, setPendingOrders],
           completedOrdersContext: [completedOrders, setCompletedOrders],
+          orderTypesContext: [setPendingOrders, setCompletedOrders],
         }}
       >
-        <h2>Orders</h2>
         <OrdersAccordion />
       </OrdersContext.Provider>
     </div>

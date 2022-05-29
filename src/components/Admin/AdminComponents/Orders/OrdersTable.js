@@ -1,15 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
 import moment from "moment";
-import { Box, Checkbox, List } from "@mui/material";
+import { Box, List, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
+import DoneIcon from "@mui/icons-material/Done";
+import CloseIcon from "@mui/icons-material/Close";
 import { OrdersContext } from "./OrdersContext";
 import OrdersProductCell from "./OrdersProductCell";
+import OrderDialog from "./OrderDialog";
+import axios from "axios";
+import { BACKEND_URL } from "../../../../store.js";
 
 export default function OrdersTable({ type }) {
   const { pendingOrdersContext, completedOrdersContext } =
     useContext(OrdersContext);
-
   let orderContext;
+  const [selectedOrder, setSelectedOrder] = useState();
+
   switch (type) {
     case "pending": {
       orderContext = pendingOrdersContext;
@@ -44,7 +50,31 @@ export default function OrdersTable({ type }) {
   }, [orders]);
 
   const handleOnCellClick = (params) => {
+    setSelectedOrder(params);
     console.log(params);
+  };
+
+  const handleCompletedClick = (event, cellData) => {
+    axios
+      .post(`${BACKEND_URL}/admin/order/completed`, cellData)
+      .then((response) => {
+        window.location.reload(); // replace when solution is found
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  const handlePendingClick = (event, cellData) => {
+    console.log(cellData);
+    axios
+      .post(`${BACKEND_URL}/admin/order/to_pending`, cellData)
+      .then((response) => {
+        window.location.reload(); // replace when solution is found
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
   const columns = [
@@ -85,12 +115,30 @@ export default function OrdersTable({ type }) {
       renderCell: (cellValues) => {
         return (
           <Box>
-            <Checkbox
-              checked={cellValues.row.complete}
-              onChange={() => {
-                console.log("changed");
-              }}
-            />
+            {type === "pending" && (
+              <IconButton
+                aria-label="edit"
+                variant="contained"
+                color="primary"
+                onClick={(event) => {
+                  handleCompletedClick(event, cellValues.row);
+                }}
+              >
+                <DoneIcon />
+              </IconButton>
+            )}
+            {type === "completed" && (
+              <IconButton
+                aria-label="edit"
+                variant="contained"
+                color="primary"
+                onClick={(event) => {
+                  handlePendingClick(event, cellValues.row);
+                }}
+              >
+                <CloseIcon />
+              </IconButton>
+            )}
           </Box>
         );
       },
@@ -114,6 +162,12 @@ export default function OrdersTable({ type }) {
           },
         }}
       />
+      {selectedOrder && (
+        <OrderDialog
+          selectedOrder={selectedOrder}
+          setSelectedOrder={setSelectedOrder}
+        />
+      )}
     </Box>
   ) : (
     <Box>No orders available.</Box>
