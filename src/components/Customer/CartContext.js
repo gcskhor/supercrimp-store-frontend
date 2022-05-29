@@ -1,5 +1,5 @@
 import axios from "axios";
-import React, { useContext, useEffect, useReducer } from "react";
+import React, { useContext, useEffect, useReducer, useState } from "react";
 // import { BACKEND_URL } from "../../store.js";
 
 axios.defaults.withCredentials = true;
@@ -75,10 +75,21 @@ export function useCartContext() {
 
 export function CartContextProvider({ children }) {
 	const [cart, cartDispatch] = useReducer(cartReducer, []);
+	const [total, setTotal] = useState(0);
+
+	const updateTotal = () => {
+		let totalTally = 0;
+		cart.forEach((item) => {
+			totalTally += Number(item.subtotalCost);
+		});
+		setTotal(totalTally);
+	};
 
 	useEffect(() => {
 		cartDispatch(retrieveCart());
 	}, []);
+
+	useEffect(() => updateTotal(), [cart]);
 
 	return (
 		<CartContext.Provider
@@ -86,6 +97,7 @@ export function CartContextProvider({ children }) {
 				cart,
 				cartDispatch,
 				dispatchHelpers: [retrieveCart, addItemToCart],
+				total,
 			}}
 		>
 			{children}
