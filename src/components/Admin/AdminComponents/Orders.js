@@ -8,7 +8,6 @@ const loadOrders = async (type, setter) => {
   return axios
     .get(`${BACKEND_URL}/admin/orders/${type}`)
     .then((response) => {
-      console.log(response.data);
       setter(response.data);
     })
     .catch((err) => {
