@@ -13,7 +13,7 @@ export default function OrdersAccordion() {
     <div>
       <Accordion defaultExpanded={true}>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6">Pending Orders</Typography>
+          <Typography variant="h5">Pending Orders</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <OrdersTable type="pending" />
@@ -21,7 +21,7 @@ export default function OrdersAccordion() {
       </Accordion>
       <Accordion>
         <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-          <Typography variant="h6">Completed Orders</Typography>
+          <Typography variant="h5">Completed Orders</Typography>
         </AccordionSummary>
         <AccordionDetails>
           <OrdersTable type="completed" />
