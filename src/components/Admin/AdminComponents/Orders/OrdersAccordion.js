@@ -16,9 +16,7 @@ export default function OrdersAccordion() {
           <Typography variant="h6">Pending Orders</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>Pending orders table goes here</Typography>
-          {/* <OrdersTable type="pending" /> */}
-          {/* UNCOMMENT ONCE COLUMN AND ROW DATA IS READY */}
+          <OrdersTable type="pending" />
         </AccordionDetails>
       </Accordion>
       <Accordion>
@@ -26,9 +24,7 @@ export default function OrdersAccordion() {
           <Typography variant="h6">Completed Orders</Typography>
         </AccordionSummary>
         <AccordionDetails>
-          <Typography>completed orders table goes here</Typography>
-          {/* <OrdersTable type="completed" /> */}
-          {/* UNCOMMENT ONCE COLUMN AND ROW DATA IS READY */}
+          <OrdersTable type="completed" />
         </AccordionDetails>
       </Accordion>
     </div>
