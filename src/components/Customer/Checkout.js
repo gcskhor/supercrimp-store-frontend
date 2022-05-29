@@ -1,6 +1,9 @@
 import { Container, Typography, Button, Stack } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
+import { BACKEND_URL } from "../../store.js";
 import CartDetails from "./CartDetails/CartDetails.js";
 import CheckoutDetails from "./UserDetailsForm/UserDetailsForm.js";
 
@@ -28,6 +31,7 @@ export default function Checkout() {
 
 	const [userDetails, setUserDetails] = useState(emptyUserDetails);
 	const [inputError, setInputError] = useState(noInputErrors);
+	const [searchParams] = useSearchParams();
 
 	const isFormValid = () => {
 		return !(
@@ -39,11 +43,20 @@ export default function Checkout() {
 		);
 	};
 
-	const handleCheckout = () => {
+	const handleCheckout = async () => {
 		if (isFormValid()) {
 			console.log("valid form");
 			localStorage.setItem("userDetails", JSON.stringify(userDetails));
+			const cart = JSON.parse(localStorage.getItem("cart"));
 			console.log(localStorage);
+
+			axios
+				.post(`${BACKEND_URL}/checkout`, { cart })
+				.then((response) => {
+					console.log(response.data.url);
+					window.location = response.data.url;
+				})
+				.catch((error) => console.log(error.message));
 		}
 	};
 
@@ -52,6 +65,11 @@ export default function Checkout() {
 			<Typography py={3} variant="h3">
 				Checkout
 			</Typography>
+			{searchParams.get("error") && (
+				<Typography textAlign="center" variant="h6">
+					Payment failed. Try again.
+				</Typography>
+			)}
 			<Typography
 				variant="button"
 				fontSize="large"

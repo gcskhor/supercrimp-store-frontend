@@ -13,6 +13,7 @@ import AddProduct from "./components/Admin/AdminComponents/Products/AddProduct.j
 import EditProduct from "./components/Admin/AdminComponents/Products/EditProduct.js";
 import Colours from "./components/Admin/AdminComponents/Colours.js";
 import Checkout from "./components/Customer/Checkout.js";
+import CheckoutSuccess from "./components/Customer/CheckoutSuccess.js";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -23,6 +24,7 @@ root.render(
 				<Route path="product/:productId" element={<Product />} />
 				<Route path="cart" element={<Cart />} />
 				<Route path="checkout" element={<Checkout />} />
+				<Route path="checkout-success" element={<CheckoutSuccess />} />
 				{/* <Route
 					path="profile"
 					element={<INSERT-PROFILE-COMPONENT-HERE />}
