@@ -17,7 +17,7 @@ const cartReducer = (state, action) => {
 			return action.payload.cart;
 		case ACTIONS.ADD:
 			// TODO: increase quantity instead of adding same item
-			return [...state, action.payload];
+			return state ? [...state, action.payload] : [action.payload];
 		// case ACTIONS.EDIT:
 		// return { ...state, end: action.payload.endDate };
 		// case ACTIONS.REMOVE:
@@ -79,7 +79,7 @@ export function CartContextProvider({ children }) {
 
 	const updateTotal = () => {
 		let totalTally = 0;
-		cart.forEach((item) => {
+		cart?.forEach((item) => {
 			totalTally += Number(item.subtotalCost);
 		});
 		setTotal(totalTally);
