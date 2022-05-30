@@ -45,13 +45,12 @@ export default function Checkout() {
 
 	const handleCheckout = async () => {
 		if (isFormValid()) {
-			console.log("valid form");
 			localStorage.setItem("userDetails", JSON.stringify(userDetails));
+
 			const cart = JSON.parse(localStorage.getItem("cart"));
-			console.log(localStorage);
 
 			axios
-				.post(`${BACKEND_URL}/checkout`, { cart })
+				.post(`${BACKEND_URL}/checkout`, { cart, userDetails })
 				.then((response) => {
 					console.log(response.data.url);
 					window.location = response.data.url;
@@ -77,7 +76,6 @@ export default function Checkout() {
 				display="block"
 				mb={3}
 				px={1}
-				id="user-details"
 			>
 				User Details
 			</Typography>
