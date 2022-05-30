@@ -56,7 +56,7 @@ export default function UserDetailsForm({
 				break;
 			case "postalCode":
 				const postcode = Number(value);
-				if (0 < postcode && postcode < 900000) {
+				if (0 < postcode && postcode < 1000000) {
 					setInputError({ ...inputError, [id]: false });
 				} else {
 					setInputError({ ...inputError, [id]: true });
