@@ -2,15 +2,18 @@ import { Grid, Typography, Card } from "@mui/material";
 
 import { useCartContext } from "../CartContext.js";
 
-import CartItem from "./CartItem.js";
+import CartSummaryItem from "./CartSummaryItem.js";
 
-export default function CartDetails() {
+export default function CartSummary() {
 	const { cart, total } = useCartContext();
 
 	function CartItemsList() {
-		return cart.map((item, i) => {
+		return cart?.map((item, i) => {
 			return (
-				<CartItem item={item} key={`${item.name}-${item.colourId}-${i}`} />
+				<CartSummaryItem
+					item={item}
+					key={`${item.name}-${item.colourId}-${i}`}
+				/>
 			);
 		});
 	}

@@ -2,22 +2,22 @@ import { Grid, Typography, Card } from "@mui/material";
 
 import { useCartContext } from "../CartContext.js";
 
-import CartItem from "./CartItem.js";
+import OrderItem from "./OrderItem.js";
 
-export default function CartDetails() {
+export default function OrderDetails() {
 	const { cart, total } = useCartContext();
 
-	function CartItemsList() {
-		return cart.map((item, i) => {
+	function OrderItemsList() {
+		return cart?.map((item, i) => {
 			return (
-				<CartItem item={item} key={`${item.name}-${item.colourId}-${i}`} />
+				<OrderItem item={item} key={`${item.name}-${item.colourId}-${i}`} />
 			);
 		});
 	}
 
 	return (
 		<Card sx={{ pb: 3, mb: 3 }}>
-			<CartItemsList />
+			<OrderItemsList />
 			<Grid container sx={{ px: 5, mt: 3 }}>
 				<Grid item xs={12} sm></Grid>
 				<Grid item sm={4} sx={{ textAlign: { sm: "right" } }}>

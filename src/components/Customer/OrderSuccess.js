@@ -16,7 +16,6 @@ import { BACKEND_URL } from "../../store.js";
 
 export default function CheckoutSuccess() {
 	const [orderDetails, setOrderDetails] = useState(null);
-	const [total, setTotal] = useState(Number(0));
 	const { orderId } = useParams();
 
 	const orderSubmitted = document.cookie
@@ -37,13 +36,6 @@ export default function CheckoutSuccess() {
 				setOrderDetails(null);
 			});
 	}, []);
-
-	useEffect(() => {
-		orderDetails?.products.forEach((item) => {
-			const subtotal = item.quantity * Number(item.product.currentPrice);
-			setTotal((prevTotal) => prevTotal + subtotal);
-		});
-	}, [orderDetails]);
 
 	function OrderItemsList() {
 		const formatItemDetails = (item) => {
@@ -134,7 +126,7 @@ export default function CheckoutSuccess() {
 							<Grid item xs={12} sm></Grid>
 							<Grid item sm={4} sx={{ textAlign: { sm: "right" } }}>
 								<Typography variant="h6">
-									Total: S${total.toFixed(2)}
+									Total: S${Number(orderDetails.totalCost).toFixed(2)}
 								</Typography>
 							</Grid>
 						</Grid>
