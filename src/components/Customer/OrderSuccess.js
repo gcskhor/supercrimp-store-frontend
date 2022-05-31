@@ -16,6 +16,7 @@ import { BACKEND_URL } from "../../store.js";
 
 export default function CheckoutSuccess() {
 	const [orderDetails, setOrderDetails] = useState(null);
+	const [total, setTotal] = useState(Number(0));
 	const { orderId } = useParams();
 
 	const orderSubmitted = document.cookie
@@ -37,12 +38,16 @@ export default function CheckoutSuccess() {
 			});
 	}, []);
 
-	let total = 0;
+	useEffect(() => {
+		orderDetails?.products.forEach((item) => {
+			const subtotal = item.quantity * Number(item.product.currentPrice);
+			setTotal((prevTotal) => prevTotal + subtotal);
+		});
+	}, [orderDetails]);
 
 	function OrderItemsList() {
 		const formatItemDetails = (item) => {
 			const subtotalCost = item.quantity * Number(item.product.currentPrice);
-			total += subtotalCost;
 			return {
 				name: item.product.name,
 				colour: item.colour.name,
