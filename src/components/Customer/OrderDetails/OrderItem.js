@@ -1,40 +1,6 @@
 import { Box, Grid, Typography } from "@mui/material";
-import { useState, useEffect } from "react";
-import { useInventoryContext } from "../InventoryContext.js";
-import EditItemColour from "./EditItemColour.js";
 
-export default function CartItem({ item }) {
-	const [selectedColour, setSelectedColour] = useState({ id: "", name: "" });
-	const { products, availableColours } = useInventoryContext();
-
-	useEffect(() => {
-		const itemColour = availableColours.find(
-			(colour) => colour.id === item.colourId
-		);
-		itemColour && setSelectedColour(itemColour);
-	}, [item.colourId, availableColours]);
-
-	const getProductDetails = (type) => {
-		const result = products.find((product) => product.id === item.productId);
-		switch (type) {
-			case "name":
-				return result && result.name;
-			case "colours":
-				return result && result.colours;
-			case "usual price":
-				return result && Number(result.usualPrice).toFixed(2);
-			case "current price":
-				return result && Number(result.currentPrice).toFixed(2);
-			default:
-				return null;
-		}
-	};
-
-	item.name = getProductDetails("name");
-	item.colours = getProductDetails("colours");
-	item.usualPrice = getProductDetails("usual price");
-	item.currentPrice = getProductDetails("current price");
-
+export default function OrderItem({ item }) {
 	return (
 		<Box
 			sx={{
@@ -47,7 +13,7 @@ export default function CartItem({ item }) {
 			<Typography variant="h6" mb={1}>
 				{item.name}
 			</Typography>
-			<Grid container alignItems="center">
+			<Grid container>
 				<Grid
 					item
 					xs={12}
@@ -56,13 +22,7 @@ export default function CartItem({ item }) {
 						px: { xs: 1, sm: 0 },
 					}}
 				>
-					{item && (
-						<EditItemColour
-							item={item}
-							selectedColour={selectedColour}
-							setSelectedColour={setSelectedColour}
-						/>
-					)}
+					<Typography variant="button">{item.colour}</Typography>
 				</Grid>
 				<Grid
 					item

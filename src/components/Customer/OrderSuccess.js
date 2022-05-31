@@ -11,7 +11,7 @@ import {
 	Button,
 } from "@mui/material";
 
-import CartItem from "./CartDetails/CartItem.js";
+import OrderItem from "./OrderDetails/OrderItem.js";
 import { BACKEND_URL } from "../../store.js";
 
 export default function CheckoutSuccess() {
@@ -63,7 +63,7 @@ export default function CheckoutSuccess() {
 		);
 
 		return orderItems.map((item, i) => (
-			<CartItem item={item} key={`${item.name}-${item.colour}-${i}`} />
+			<OrderItem item={item} key={`${item.name}-${item.colour}-${i}`} />
 		));
 	}
 
