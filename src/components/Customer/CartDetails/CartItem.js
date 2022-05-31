@@ -2,9 +2,11 @@ import { Box, Grid, Typography } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useInventoryContext } from "../InventoryContext.js";
 import EditItemColour from "./EditItemColour.js";
+import EditItemQuantity from "./EditItemQuantity.js";
 
 export default function CartItem({ item }) {
 	const [selectedColour, setSelectedColour] = useState({ id: "", name: "" });
+	const [quantity, setQuantity] = useState(item.quantity);
 	const { products, availableColours } = useInventoryContext();
 
 	useEffect(() => {
@@ -13,6 +15,10 @@ export default function CartItem({ item }) {
 		);
 		itemColour && setSelectedColour(itemColour);
 	}, [item.colourId, availableColours]);
+
+	useEffect(() => {
+		setQuantity(item.quantity);
+	}, [item.quantity]);
 
 	const getProductDetails = (type) => {
 		const result = products.find((product) => product.id === item.productId);
@@ -101,7 +107,11 @@ export default function CartItem({ item }) {
 						borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
-					<Typography variant="body1">Qty: {item.quantity}</Typography>
+					<EditItemQuantity
+						item={item}
+						quantity={quantity}
+						setQuantity={setQuantity}
+					/>
 				</Grid>
 				<Grid
 					item

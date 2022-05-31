@@ -1,8 +1,4 @@
-import axios from "axios";
 import React, { useContext, useEffect, useReducer, useState } from "react";
-// import { BACKEND_URL } from "../../store.js";
-
-axios.defaults.withCredentials = true;
 
 const ACTIONS = {
 	RETRIEVE: "retrieve cart",
@@ -23,8 +19,13 @@ const cartReducer = (state, action) => {
 		case ACTIONS.EDIT_COLOUR:
 			return action.payload.cart;
 
-		// case ACTIONS.REMOVE:
-		// return { start: "", end: "" };
+		case ACTIONS.EDIT_QTY:
+			return action.payload.cart;
+
+		case ACTIONS.REMOVE:
+			const { newCart } = action.payload;
+			return newCart.length < 1 ? null : action.payload.newCart;
+
 		default:
 			throw new Error();
 	}
@@ -86,11 +87,40 @@ const editItemColour = (productId, colourId, newColour) => {
 	};
 };
 
-// const removeItemFromCart = () => {
-// 	return {
-// 		type: ACTIONS.REMOVE,
-// 	};
-// };
+const editItemQuantity = (productId, colourId, currentPrice, quantity) => {
+	const cart = JSON.parse(localStorage.getItem("cart"));
+	const itemIndex = cart.findIndex(
+		(item) => item.productId === productId && item.colourId === colourId
+	);
+
+	const item = cart[itemIndex];
+	item.quantity = quantity;
+	item.subtotalCost = currentPrice * quantity;
+
+	localStorage.setItem("cart", JSON.stringify(cart));
+	return {
+		type: ACTIONS.EDIT_QTY,
+		payload: { cart },
+	};
+};
+
+const removeItemFromCart = (productId, colourId) => {
+	const cart = JSON.parse(localStorage.getItem("cart"));
+	const newCart = cart.filter(
+		(item) => !(item.productId === productId && item.colourId === colourId)
+	);
+
+	if (newCart.length < 1) {
+		localStorage.removeItem("cart");
+	} else {
+		localStorage.setItem("cart", JSON.stringify(newCart));
+	}
+
+	return {
+		type: ACTIONS.REMOVE,
+		payload: { newCart },
+	};
+};
 
 const CartContext = React.createContext();
 
@@ -122,7 +152,13 @@ export function CartContextProvider({ children }) {
 			value={{
 				cart,
 				cartDispatch,
-				dispatchHelpers: [retrieveCart, addItemToCart, editItemColour],
+				dispatchHelpers: [
+					retrieveCart,
+					addItemToCart,
+					editItemColour,
+					editItemQuantity,
+					removeItemFromCart,
+				],
 				total,
 			}}
 		>
