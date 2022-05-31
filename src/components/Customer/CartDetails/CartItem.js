@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useInventoryContext } from "../InventoryContext.js";
 import EditItemColour from "./EditItemColour.js";
 import EditItemQuantity from "./EditItemQuantity.js";
+import DeleteItem from "./DeleteItem.js";
 
 export default function CartItem({ item }) {
 	const [selectedColour, setSelectedColour] = useState({ id: "", name: "" });
@@ -116,7 +117,7 @@ export default function CartItem({ item }) {
 				<Grid
 					item
 					xs={12}
-					sm={4}
+					sm={3}
 					sx={{
 						px: { xs: 1, sm: 0 },
 						textAlign: { sm: "right" },
@@ -128,6 +129,17 @@ export default function CartItem({ item }) {
 					>
 						Subtotal: S${Number(item.subtotalCost).toFixed(2)}
 					</Typography>
+				</Grid>
+				<Grid
+					item
+					xs={12}
+					sm={1}
+					sx={{
+						px: { xs: 1, sm: 0 },
+						textAlign: { sm: "right" },
+					}}
+				>
+					<DeleteItem item={item} />
 				</Grid>
 			</Grid>
 		</Box>

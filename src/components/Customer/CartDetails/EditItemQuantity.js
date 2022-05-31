@@ -31,7 +31,11 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 		}
 	};
 	return (
-		<Stack alignItems="center">
+		<Stack
+			justifyContent={{ xs: "left", sm: "center" }}
+			alignItems={{ xs: "center", sm: "center" }}
+			direction={{ xs: "row", sm: "column" }}
+		>
 			<Typography variant="button">Qty: {quantity}</Typography>
 			<ButtonGroup variant="text" size="small">
 				<Button onClick={handleDecreaseQty}>
