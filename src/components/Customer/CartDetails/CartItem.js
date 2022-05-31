@@ -77,8 +77,8 @@ export default function CartItem({ item }) {
 					sx={{
 						px: { xs: 1, sm: 2 },
 						textAlign: { sm: "center" },
-						borderLeft: { sm: "1px dotted #cacaca" },
-						borderRight: { sm: "1px dotted #cacaca" },
+						// borderLeft: { sm: "1px dotted #cacaca" },
+						// borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
 					{item.currentPrice === item.usualPrice ? (
@@ -104,7 +104,7 @@ export default function CartItem({ item }) {
 					sx={{
 						px: { xs: 1, sm: 2 },
 						textAlign: { sm: "center" },
-						borderRight: { sm: "1px dotted #cacaca" },
+						// borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
 					<EditItemQuantity
@@ -126,7 +126,7 @@ export default function CartItem({ item }) {
 						variant="body1"
 						sx={{ fontWeight: { xs: "bold", sm: "normal" } }}
 					>
-						Subtotal: S${item.subtotalCost}
+						Subtotal: S${Number(item.subtotalCost).toFixed(2)}
 					</Typography>
 				</Grid>
 			</Grid>

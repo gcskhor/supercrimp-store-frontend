@@ -1,4 +1,8 @@
 import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import {
+	AddCircleOutlineRounded,
+	RemoveCircleOutlineRounded,
+} from "@mui/icons-material";
 import { useCartContext } from "../CartContext.js";
 
 export default function EditItemQuantity({ item, quantity, setQuantity }) {
@@ -30,8 +34,12 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 		<Stack alignItems="center">
 			<Typography variant="button">Qty: {quantity}</Typography>
 			<ButtonGroup variant="text" size="small">
-				<Button onClick={handleDecreaseQty}>-</Button>
-				<Button onClick={handleIncreaseQty}>+</Button>
+				<Button onClick={handleDecreaseQty}>
+					<RemoveCircleOutlineRounded />
+				</Button>
+				<Button onClick={handleIncreaseQty}>
+					<AddCircleOutlineRounded />
+				</Button>
 			</ButtonGroup>
 		</Stack>
 	);
