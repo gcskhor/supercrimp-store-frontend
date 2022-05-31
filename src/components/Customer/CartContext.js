@@ -1,13 +1,10 @@
-import axios from "axios";
 import React, { useContext, useEffect, useReducer, useState } from "react";
-// import { BACKEND_URL } from "../../store.js";
-
-axios.defaults.withCredentials = true;
 
 const ACTIONS = {
 	RETRIEVE: "retrieve cart",
 	ADD: "add item to cart",
-	EDIT: "edit item in cart",
+	EDIT_COLOUR: "edit colour of item in cart",
+	EDIT_QTY: "edit quantity of item in cart",
 	REMOVE: "remove item from cart",
 };
 
@@ -15,13 +12,20 @@ const cartReducer = (state, action) => {
 	switch (action.type) {
 		case ACTIONS.RETRIEVE:
 			return action.payload.cart;
+
 		case ACTIONS.ADD:
-			// TODO: increase quantity instead of adding same item
-			return state ? [...state, action.payload] : [action.payload];
-		// case ACTIONS.EDIT:
-		// return { ...state, end: action.payload.endDate };
-		// case ACTIONS.REMOVE:
-		// return { start: "", end: "" };
+			return action.payload;
+
+		case ACTIONS.EDIT_COLOUR:
+			return action.payload.cart;
+
+		case ACTIONS.EDIT_QTY:
+			return action.payload.cart;
+
+		case ACTIONS.REMOVE:
+			const { newCart } = action.payload;
+			return newCart.length < 1 ? null : action.payload.newCart;
+
 		default:
 			throw new Error();
 	}
@@ -36,36 +40,87 @@ const retrieveCart = () => {
 };
 
 const addItemToCart = (product, colourId, quantity) => {
-	const subtotalCost = product.currentPrice * quantity;
-	const item = { productId: product.id, colourId, quantity, subtotalCost };
-
 	const cart = JSON.parse(localStorage.getItem("cart"));
+	const newCart = cart ?? [];
 
-	if (!cart) {
-		localStorage.setItem("cart", JSON.stringify([item]));
+	const newItem = {
+		productId: product.id,
+		colourId,
+		quantity,
+		subtotalCost: product.currentPrice * quantity,
+	};
+
+	const existingItemIndex = newCart.findIndex(
+		(item) =>
+			item.productId === newItem.productId && item.colourId === newItem.colourId
+	);
+
+	if (existingItemIndex < 0) {
+		newCart.push(newItem);
 	} else {
-		cart.push(item);
-		localStorage.setItem("cart", JSON.stringify(cart));
+		const existingItem = cart[existingItemIndex];
+		existingItem.quantity += 1;
+		existingItem.subtotalCost += Number(product.currentPrice);
 	}
+
+	localStorage.setItem("cart", JSON.stringify(newCart));
 
 	return {
 		type: ACTIONS.ADD,
-		payload: item,
+		payload: newCart,
 	};
 };
 
-// const editItemInCart = () => {
-// 	return {
-// 		type: ACTIONS.EDIT,
-// 		payload: {  },
-// 	};
-// };
+const editItemColour = (productId, colourId, newColour) => {
+	const cart = JSON.parse(localStorage.getItem("cart"));
+	const itemIndex = cart.findIndex(
+		(item) => item.productId === productId && item.colourId === colourId
+	);
 
-// const removeItemFromCart = () => {
-// 	return {
-// 		type: ACTIONS.REMOVE,
-// 	};
-// };
+	const item = cart[itemIndex];
+	item.colourId = newColour.id;
+
+	localStorage.setItem("cart", JSON.stringify(cart));
+	return {
+		type: ACTIONS.EDIT_COLOUR,
+		payload: { cart },
+	};
+};
+
+const editItemQuantity = (productId, colourId, currentPrice, quantity) => {
+	const cart = JSON.parse(localStorage.getItem("cart"));
+	const itemIndex = cart.findIndex(
+		(item) => item.productId === productId && item.colourId === colourId
+	);
+
+	const item = cart[itemIndex];
+	item.quantity = quantity;
+	item.subtotalCost = currentPrice * quantity;
+
+	localStorage.setItem("cart", JSON.stringify(cart));
+	return {
+		type: ACTIONS.EDIT_QTY,
+		payload: { cart },
+	};
+};
+
+const removeItemFromCart = (productId, colourId) => {
+	const cart = JSON.parse(localStorage.getItem("cart"));
+	const newCart = cart.filter(
+		(item) => !(item.productId === productId && item.colourId === colourId)
+	);
+
+	if (newCart.length < 1) {
+		localStorage.removeItem("cart");
+	} else {
+		localStorage.setItem("cart", JSON.stringify(newCart));
+	}
+
+	return {
+		type: ACTIONS.REMOVE,
+		payload: { newCart },
+	};
+};
 
 const CartContext = React.createContext();
 
@@ -74,8 +129,9 @@ export function useCartContext() {
 }
 
 export function CartContextProvider({ children }) {
-	const [cart, cartDispatch] = useReducer(cartReducer, []);
+	const [cart, cartDispatch] = useReducer(cartReducer, null);
 	const [total, setTotal] = useState(0);
+	console.log("cart", cart);
 
 	const updateTotal = () => {
 		let totalTally = 0;
@@ -96,7 +152,13 @@ export function CartContextProvider({ children }) {
 			value={{
 				cart,
 				cartDispatch,
-				dispatchHelpers: [retrieveCart, addItemToCart],
+				dispatchHelpers: [
+					retrieveCart,
+					addItemToCart,
+					editItemColour,
+					editItemQuantity,
+					removeItemFromCart,
+				],
 				total,
 			}}
 		>
