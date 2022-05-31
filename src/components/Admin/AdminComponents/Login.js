@@ -11,14 +11,12 @@ export default function Login() {
     axios
       .post(`${BACKEND_URL}/admin/login`, { email: email, password: password })
       .then((response) => {
-        console.log(response.data.token);
-
         // login success
-        response.data.token &&
-          localStorage.setItem("token", response.data.token);
+        window.location.href = "/admin";
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
+        // display toast
       });
   };
 

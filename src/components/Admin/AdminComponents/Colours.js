@@ -15,7 +15,10 @@ export function reloadColours(setColours, BACKEND_URL) {
       setColours(response.data);
     })
     .catch((err) => {
-      console.log(err);
+      console.log(err.response);
+      if (err.response.status === 401) {
+        window.location.href = "/admin/login";
+      }
     });
 }
 

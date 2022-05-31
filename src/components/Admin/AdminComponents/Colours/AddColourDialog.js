@@ -51,7 +51,10 @@ export default function AddColourDialog() {
         handleClose();
       })
       .catch((err) => {
-        console.log(err);
+        console.log(err.response);
+        if (err.response.status === 401) {
+          window.location.href = "/admin/login";
+        }
       });
   };
 
