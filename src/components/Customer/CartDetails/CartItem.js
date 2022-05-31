@@ -19,7 +19,7 @@ export default function CartItem({ item }) {
 
 	useEffect(() => {
 		setQuantity(item.quantity);
-	}, [item.quantity]);
+	}, [item]);
 
 	const getProductDetails = (type) => {
 		const result = products.find((product) => product.id === item.productId);
