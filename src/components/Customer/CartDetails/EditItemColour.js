@@ -22,7 +22,9 @@ export default function EditItemColour({
 
 	const handleMenuItemClick = (event, colour) => {
 		setSelectedColour(colour);
-		cartDispatch(editItemColour(item.productId, item.colourId, colour));
+		cartDispatch(
+			editItemColour(item.productId, item.colourId, item.currentPrice, colour)
+		);
 		setAnchorEl(null);
 	};
 

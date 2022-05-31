@@ -71,14 +71,28 @@ const addItemToCart = (product, colourId, quantity) => {
 	};
 };
 
-const editItemColour = (productId, colourId, newColour) => {
+const editItemColour = (productId, colourId, currentPrice, newColour) => {
 	const cart = JSON.parse(localStorage.getItem("cart"));
-	const itemIndex = cart.findIndex(
+
+	// update current item
+	const currentItemIndex = cart.findIndex(
 		(item) => item.productId === productId && item.colourId === colourId
 	);
+	const currentItem = cart[currentItemIndex];
+	currentItem.colourId = newColour.id;
 
-	const item = cart[itemIndex];
-	item.colourId = newColour.id;
+	// if item (product + colour combination) already exists,
+	// combine both and update quantity
+	const existingItemIndex = cart.findIndex(
+		(item) => item.productId === productId && item.colourId === newColour.id
+	);
+
+	if (existingItemIndex >= 0) {
+		const existingItem = cart[existingItemIndex];
+		existingItem.quantity += currentItem.quantity;
+		existingItem.subtotalCost += currentItem.quantity * currentPrice;
+		cart.splice(currentItemIndex, 1);
+	}
 
 	localStorage.setItem("cart", JSON.stringify(cart));
 	return {
@@ -131,7 +145,6 @@ export function useCartContext() {
 export function CartContextProvider({ children }) {
 	const [cart, cartDispatch] = useReducer(cartReducer, null);
 	const [total, setTotal] = useState(0);
-	console.log("cart", cart);
 
 	const updateTotal = () => {
 		let totalTally = 0;
