@@ -1,4 +1,5 @@
 import { Outlet } from "react-router-dom";
+import { Box } from "@mui/material";
 
 import { InventoryContextProvider } from "./InventoryContext.js";
 import { CartContextProvider } from "./CartContext.js";
@@ -9,7 +10,9 @@ function Customer() {
 		<InventoryContextProvider>
 			<CartContextProvider>
 				<Navbar />
-				<Outlet />
+				<Box mt={5}>
+					<Outlet />
+				</Box>
 			</CartContextProvider>
 		</InventoryContextProvider>
 	);

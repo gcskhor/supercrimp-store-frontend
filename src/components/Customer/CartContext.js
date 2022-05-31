@@ -145,6 +145,7 @@ export function useCartContext() {
 export function CartContextProvider({ children }) {
 	const [cart, cartDispatch] = useReducer(cartReducer, null);
 	const [total, setTotal] = useState(0);
+	const [numItems, setNumItems] = useState(0);
 
 	const updateTotal = () => {
 		let totalTally = 0;
@@ -154,11 +155,22 @@ export function CartContextProvider({ children }) {
 		setTotal(totalTally);
 	};
 
+	const updateNumItems = () => {
+		let num = 0;
+		cart?.forEach((item) => {
+			num += item.quantity;
+		});
+		setNumItems(num);
+	};
+
 	useEffect(() => {
 		cartDispatch(retrieveCart());
 	}, []);
 
-	useEffect(() => updateTotal(), [cart]);
+	useEffect(() => {
+		updateTotal();
+		updateNumItems();
+	}, [cart]);
 
 	return (
 		<CartContext.Provider
@@ -173,6 +185,7 @@ export function CartContextProvider({ children }) {
 					removeItemFromCart,
 				],
 				total,
+				numItems,
 			}}
 		>
 			{children}
