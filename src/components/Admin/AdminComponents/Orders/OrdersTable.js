@@ -4,6 +4,7 @@ import { Box, List, IconButton } from "@mui/material";
 import { DataGrid } from "@mui/x-data-grid";
 import DoneIcon from "@mui/icons-material/Done";
 import CloseIcon from "@mui/icons-material/Close";
+import MoreVertIcon from "@mui/icons-material/MoreVert";
 import { OrdersContext } from "./OrdersContext";
 import OrdersProductCell from "./OrdersProductCell";
 import OrderDialog from "./OrderDialog";
@@ -49,12 +50,13 @@ export default function OrdersTable({ type }) {
     }
   }, [orders]);
 
-  const handleOnCellClick = (params) => {
+  const handleMoreDetailsClick = (params) => {
     setSelectedOrder(params);
-    console.log(params);
   };
 
   const handleCompletedClick = (event, cellData) => {
+    console.log("completing");
+    console.log(cellData);
     axios
       .post(`${BACKEND_URL}/admin/order/completed`, cellData)
       .then((response) => {
@@ -66,6 +68,7 @@ export default function OrdersTable({ type }) {
   };
 
   const handlePendingClick = (event, cellData) => {
+    console.log("to pending");
     console.log(cellData);
     axios
       .post(`${BACKEND_URL}/admin/order/to_pending`, cellData)
@@ -78,6 +81,27 @@ export default function OrdersTable({ type }) {
   };
 
   const columns = [
+    {
+      field: "details",
+      headerName: "",
+      width: 40,
+      align: "center",
+      headerAlign: "center",
+      renderCell: (cellValues) => {
+        return (
+          <IconButton
+            aria-label="edit"
+            variant="contained"
+            color="primary"
+            onClick={(event) => {
+              handleMoreDetailsClick(cellValues);
+            }}
+          >
+            <MoreVertIcon />
+          </IconButton>
+        );
+      },
+    },
     { field: "id", headerName: "ID", width: 75 },
     {
       field: "products",
@@ -155,7 +179,6 @@ export default function OrdersTable({ type }) {
         rowHeight={100}
         autoPageSize
         pagination
-        onCellClick={handleOnCellClick}
         initialState={{
           sorting: {
             sortModel: [{ field: "id", sort: "asc" }],
