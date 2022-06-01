@@ -55,6 +55,8 @@ export default function OrdersTable({ type }) {
   };
 
   const handleCompletedClick = (event, cellData) => {
+    console.log("completing");
+    console.log(cellData);
     axios
       .post(`${BACKEND_URL}/admin/order/completed`, cellData)
       .then((response) => {
@@ -66,6 +68,7 @@ export default function OrdersTable({ type }) {
   };
 
   const handlePendingClick = (event, cellData) => {
+    console.log("to pending");
     console.log(cellData);
     axios
       .post(`${BACKEND_URL}/admin/order/to_pending`, cellData)
