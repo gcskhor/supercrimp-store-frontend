@@ -74,19 +74,19 @@ const addItemToCart = (product, colourId, quantity) => {
 const editItemColour = (productId, colourId, currentPrice, newColour) => {
 	const cart = JSON.parse(localStorage.getItem("cart"));
 
-	// update current item
 	const currentItemIndex = cart.findIndex(
 		(item) => item.productId === productId && item.colourId === colourId
 	);
+	const existingItemIndex = cart.findIndex(
+		(item) => item.productId === productId && item.colourId === newColour.id
+	);
+
+	// update current item
 	const currentItem = cart[currentItemIndex];
 	currentItem.colourId = newColour.id;
 
 	// if item (product + colour combination) already exists,
 	// combine both and update quantity
-	const existingItemIndex = cart.findIndex(
-		(item) => item.productId === productId && item.colourId === newColour.id
-	);
-
 	if (existingItemIndex >= 0) {
 		const existingItem = cart[existingItemIndex];
 		existingItem.quantity += currentItem.quantity;
