@@ -4,12 +4,14 @@ import {
 	RemoveCircleOutlineRounded,
 } from "@mui/icons-material";
 import { useCartContext } from "../CartContext.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function EditItemQuantity({ item, quantity, setQuantity }) {
 	const {
 		cartDispatch,
 		dispatchHelpers: [, , , editItemQty, removeItemFromCart],
 	} = useCartContext();
+	const { enableSnackBar } = useSnackbarContext();
 
 	const handleIncreaseQty = () => {
 		const newQty = quantity + 1;
@@ -17,6 +19,7 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 		cartDispatch(
 			editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 		);
+		enableSnackBar("Incremented item quantity")();
 	};
 
 	const handleDecreaseQty = () => {
@@ -26,8 +29,10 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 			cartDispatch(
 				editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 			);
+			enableSnackBar("Decremented item quantity")();
 		} else {
 			cartDispatch(removeItemFromCart(item.productId, item.colourId));
+			enableSnackBar("Removed item from cart")();
 		}
 	};
 	return (
