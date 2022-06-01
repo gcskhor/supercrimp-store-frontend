@@ -73,7 +73,6 @@ const addItemToCart = (product, colourId, quantity) => {
 
 const editItemColour = (productId, colourId, currentPrice, newColour) => {
 	const cart = JSON.parse(localStorage.getItem("cart"));
-
 	const currentItemIndex = cart.findIndex(
 		(item) => item.productId === productId && item.colourId === colourId
 	);
