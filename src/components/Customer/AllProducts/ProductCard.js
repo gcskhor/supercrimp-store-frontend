@@ -27,11 +27,9 @@ export default function ProductSummary({ productDetails }) {
 	useEffect(() => {
 		switch (name) {
 			case TRIHARD:
-				console.log(TRIHARD);
 				setCardImage(TRIHARD_CARD_IMAGE_URL);
 				break;
 			case MINIHANGBOARD:
-				console.log(MINIHANGBOARD);
 				setCardImage(MINIHANGBOARD_CARD_IMAGE_URL);
 				break;
 			default:

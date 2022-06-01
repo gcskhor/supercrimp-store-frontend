@@ -2,6 +2,7 @@ import { useState } from "react";
 import { List, ListItem, ListItemText, Menu, MenuItem } from "@mui/material";
 import { useInventoryContext } from "../InventoryContext.js";
 import { useCartContext } from "../CartContext.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function EditItemColour({
 	item,
@@ -13,6 +14,7 @@ export default function EditItemColour({
 		cartDispatch,
 		dispatchHelpers: [, , editItemColour],
 	} = useCartContext();
+	const { enableSnackBar } = useSnackbarContext();
 
 	const [anchorEl, setAnchorEl] = useState(null);
 	const open = Boolean(anchorEl);
@@ -26,6 +28,7 @@ export default function EditItemColour({
 			cartDispatch(
 				editItemColour(item.productId, item.colourId, item.currentPrice, colour)
 			);
+			enableSnackBar("Item colour changed")();
 		}
 		setAnchorEl(null);
 	};
