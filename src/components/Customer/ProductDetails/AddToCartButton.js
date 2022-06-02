@@ -1,6 +1,6 @@
 import { Box, Tooltip, Button } from "@mui/material";
 import { useCartContext } from "../CartContext.js";
-import { useSnackbarContext } from "../SnackbarContext.js";
+import { useSnackbarContext } from "../../SnackbarContext.js";
 
 export default function AddToCartButton({
 	productDetails,

@@ -4,7 +4,7 @@ import {
 	RemoveCircleOutlineRounded,
 } from "@mui/icons-material";
 import { useCartContext } from "../CartContext.js";
-import { useSnackbarContext } from "../SnackbarContext.js";
+import { useSnackbarContext } from "../../SnackbarContext.js";
 
 export default function EditItemQuantity({ item, quantity, setQuantity }) {
 	const {

@@ -6,6 +6,7 @@ import { Container, Grid } from "@mui/material";
 import { BACKEND_URL } from "../../store.js";
 import ProductDetails from "./ProductDetails/ProductDetails.js";
 import ProductCarousel from "./ProductDetails/ProductCarousel.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function Product() {
 	const emptyProduct = {
@@ -23,11 +24,18 @@ export default function Product() {
 	const [quantity, setQuantity] = useState(1);
 
 	const { productId } = useParams();
+	const { enableSnackBar } = useSnackbarContext();
 
 	useEffect(() => {
-		axios.get(`${BACKEND_URL}/product/${productId}`).then((response) => {
-			setProduct(response.data);
-		});
+		axios
+			.get(`${BACKEND_URL}/product/${productId}`)
+			.then((response) => {
+				setProduct(response.data);
+			})
+			.catch((error) => {
+				console.log(error.message);
+				enableSnackBar(error.response.data)();
+			});
 	}, [productId]);
 
 	return (

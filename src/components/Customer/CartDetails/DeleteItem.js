@@ -1,7 +1,7 @@
 import { IconButton } from "@mui/material";
 import { DeleteOutlineRounded } from "@mui/icons-material";
 import { useCartContext } from "../CartContext.js";
-import { useSnackbarContext } from "../SnackbarContext.js";
+import { useSnackbarContext } from "../../SnackbarContext.js";
 
 export default function DeleteItem({ item }) {
 	const {
