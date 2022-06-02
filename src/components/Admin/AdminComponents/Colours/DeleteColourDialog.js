@@ -60,12 +60,16 @@ export default function DeleteColourDialog() {
 				<DialogTitle>Delete Colour</DialogTitle>
 				<DialogContent>
 					<DialogContentText>
-						Are you sure you would like to delete <em>{name}</em>?
+						Are you sure you would like to delete <strong>'{name}'</strong>?
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleDelete}>Delete</Button>
-					<Button onClick={handleClose}>Back</Button>
+					<Button variant="outlined" onClick={handleClose}>
+						Back
+					</Button>
+					<Button variant="contained" color="error" onClick={handleDelete}>
+						Delete
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>
