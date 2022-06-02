@@ -66,6 +66,8 @@ export default function BannerCarousel() {
 		<Box mb={5}>
 			<Carousel
 				wrapAround
+				autoplay="true"
+				autoplayInterval="5000"
 				dragging="false"
 				renderCenterLeftControls={leftControl}
 				renderCenterRightControls={rightControl}
