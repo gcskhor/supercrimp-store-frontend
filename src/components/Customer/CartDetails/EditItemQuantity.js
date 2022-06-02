@@ -19,7 +19,7 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 		cartDispatch(
 			editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 		);
-		enableSnackBar("Increased item quantity")();
+		enableSnackBar("Item has been updated")();
 	};
 
 	const handleDecreaseQty = () => {
@@ -29,10 +29,10 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 			cartDispatch(
 				editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 			);
-			enableSnackBar("Decreased item quantity")();
+			enableSnackBar("Item has been updated")();
 		} else {
 			cartDispatch(removeItemFromCart(item.productId, item.colourId));
-			enableSnackBar("Removed item from cart")();
+			enableSnackBar("Item has been removed from cart")();
 		}
 	};
 	return (

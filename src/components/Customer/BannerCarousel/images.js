@@ -1,7 +1,7 @@
 const images = [
 	{
 		url: "/images/tri-hard/trihard_6.jpeg",
-		title: "SUPER CRIMP",
+		title: "SUPERCRIMP",
 		subtitle: "Super charge your crimp game!",
 	},
 	{

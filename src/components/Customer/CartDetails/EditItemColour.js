@@ -28,7 +28,7 @@ export default function EditItemColour({
 			cartDispatch(
 				editItemColour(item.productId, item.colourId, item.currentPrice, colour)
 			);
-			enableSnackBar("Item colour changed")();
+			enableSnackBar("Item has been updated")();
 		}
 		setAnchorEl(null);
 	};
