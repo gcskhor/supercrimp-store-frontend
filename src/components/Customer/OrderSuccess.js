@@ -13,10 +13,12 @@ import {
 
 import OrderItem from "./OrderDetails/OrderItem.js";
 import { BACKEND_URL } from "../../store.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function CheckoutSuccess() {
 	const [orderDetails, setOrderDetails] = useState(null);
 	const { orderId } = useParams();
+	const { enableSnackBar } = useSnackbarContext();
 
 	const orderSubmitted = document.cookie
 		.split("; ")
@@ -34,6 +36,8 @@ export default function CheckoutSuccess() {
 			})
 			.catch((error) => {
 				setOrderDetails(null);
+				console.log(error.message);
+				enableSnackBar(error.response.data)();
 			});
 	}, []);
 

@@ -7,6 +7,7 @@ import { useForm } from "react-hook-form";
 import { BACKEND_URL } from "../../store.js";
 import CartSummary from "./CheckoutDetails/CartSummary.js";
 import CheckoutDetails from "./UserDetailsForm/UserDetailsForm2.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function Checkout() {
 	const emptyUserDetails = {
@@ -35,6 +36,7 @@ export default function Checkout() {
 	const [userDetails, setUserDetails] = useState(emptyUserDetails);
 	const [inputError, setInputError] = useState(noInputErrors);
 	const [searchParams] = useSearchParams();
+	const { enableSnackBar } = useSnackbarContext();
 
 	const isFormValid = () => {
 		return !(
@@ -59,7 +61,10 @@ export default function Checkout() {
 					console.log("submitting to stripe");
 					window.location = response.data.url;
 				})
-				.catch((error) => console.log(error.message));
+				.catch((error) => {
+					console.log(error);
+					enableSnackBar(error.message)();
+				});
 		}
 	};
 
