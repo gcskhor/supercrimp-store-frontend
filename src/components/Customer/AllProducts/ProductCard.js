@@ -5,7 +5,6 @@ import {
 	CardMedia,
 	CardContent,
 	CardActions,
-	Typography,
 	Link,
 	Button,
 	Stack,
@@ -36,7 +35,7 @@ export default function ProductSummary({ productDetails }) {
 			default:
 				break;
 		}
-	}, []);
+	}, [name]);
 
 	return (
 		<Grid item xs={10} md={6}>

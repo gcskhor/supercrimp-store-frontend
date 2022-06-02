@@ -20,7 +20,6 @@ export default function LogoutDialog({
 			.post(`${BACKEND_URL}/admin/logout`)
 			.then((response) => {
 				console.log(response);
-				console.log("cleared cookies");
 			})
 			.catch((err) => {
 				console.log(err);

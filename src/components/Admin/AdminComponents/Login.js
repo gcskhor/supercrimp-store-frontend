@@ -1,22 +1,25 @@
 import React, { useState } from "react";
 import { Button, Box, CardMedia, Grid, TextField } from "@mui/material";
 import { BACKEND_URL } from "../../../store";
+import { useSnackbarContext } from "../../SnackbarContext.js";
 import axios from "axios";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
 	const [password, setPassword] = useState("");
+	const { enableSnackBar } = useSnackbarContext();
 
 	const handleLogin = () => {
 		axios
 			.post(`${BACKEND_URL}/admin/login`, { email: email, password: password })
 			.then((response) => {
 				// login success
+				enableSnackBar("Successful login")();
 				window.location.href = "/admin";
 			})
 			.catch((err) => {
 				console.log(err.response);
-				// display toast
+				enableSnackBar("Login failed")();
 			});
 	};
 
