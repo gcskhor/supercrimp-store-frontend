@@ -25,6 +25,10 @@ export default function AvailableColourDisplay({
 			: setSelectedColour(clickedColour); // set as selected colour
 	};
 
+	const capitaliseFirstLetter = (text) => {
+		return text.charAt(0).toUpperCase() + text.slice(1);
+	};
+
 	function AvailableColours() {
 		return availableColours.map((colour) => {
 			const key = `${productId}-${colour.name}`;
@@ -38,7 +42,7 @@ export default function AvailableColourDisplay({
 			// note: dont remove <span>
 			// without it, tooltip won't show when checkbox is disabled
 			return (
-				<Tooltip title={colour.name} key={key}>
+				<Tooltip title={capitaliseFirstLetter(colour.name)} key={key}>
 					<span>
 						<Checkbox
 							icon={
