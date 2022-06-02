@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import axios from "axios";
 import {
 	Toolbar,
 	Divider,
@@ -16,8 +15,6 @@ import ColorLensIcon from "@mui/icons-material/ColorLens";
 import MeetingRoomIcon from "@mui/icons-material/MeetingRoom";
 
 import { Link } from "react-router-dom";
-
-import { BACKEND_URL } from "../../../../../store.js";
 
 import LogoutDialog from "../../Logout/LogoutDialog.js";
 
