@@ -29,7 +29,7 @@ export default function Login() {
 					sm={5}
 					md={3}
 					m={2}
-					// sx={{ backgroundColor: "#FFF", verticalAlign: "middle" }}
+					pt={5}
 					justifyContent="center"
 					alignItems="flex-start"
 				>
@@ -38,7 +38,6 @@ export default function Login() {
 						image="/images/logos/SUPERCRIMP-logo-black.png"
 						alt=""
 						xs={12}
-						// sx={{ width: 300 }}
 					/>
 					<Box justifyContent="center"></Box>
 					<TextField
@@ -62,7 +61,6 @@ export default function Login() {
 						value={password}
 						fullWidth
 					/>
-
 					<Button
 						variant="contained"
 						onClick={() => {

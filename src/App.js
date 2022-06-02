@@ -43,6 +43,14 @@ export default function App() {
 						<Route path=":productId/edit" element={<EditProduct />} />
 					</Route>
 					<Route path="colours" element={<Colours />} />
+					<Route
+						path="*"
+						element={
+							<main>
+								<p>There's nothing here!</p>
+							</main>
+						}
+					/>
 				</Route>
 			</Routes>
 		</BrowserRouter>
