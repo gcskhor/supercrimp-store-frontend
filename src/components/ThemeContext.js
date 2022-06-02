@@ -14,13 +14,13 @@ const theme = createTheme({
 			main: "#BC1010", // dark red
 		},
 		warning: {
-			main: "#F5B841",
+			main: "#F5B841", // yellow-orange
 		},
 		info: {
-			main: "#0E3F4D",
+			main: "#0E3F4D", // dark teal
 		},
 		success: {
-			main: "#548C76",
+			main: "#548C76", // dull green
 		},
 	},
 });
