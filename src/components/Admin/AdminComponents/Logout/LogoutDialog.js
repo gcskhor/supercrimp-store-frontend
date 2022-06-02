@@ -45,7 +45,7 @@ export default function LogoutDialog({
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button color="primary" variant="contained" onClick={handleClose}>
+					<Button color="primary" variant="outlined" onClick={handleClose}>
 						Back
 					</Button>
 					<Button
@@ -54,6 +54,7 @@ export default function LogoutDialog({
 						component={Link}
 						to="/admin/login"
 						onClick={handleLogout}
+						sx={{ ml: 1 }}
 					>
 						Log Out
 					</Button>
