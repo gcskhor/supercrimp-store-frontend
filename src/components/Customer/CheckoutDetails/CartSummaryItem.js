@@ -32,15 +32,16 @@ export default function CartSummaryItem({ item }) {
 	return (
 		<Box
 			sx={{
-				px: 5,
-				pt: 2,
-				pb: 2,
-				borderBottom: "1px dotted #cacaca",
+				mx: 3,
+				px: 1,
+				pt: 3,
+				pb: 3,
+				borderWidth: "1px",
+				borderBottomStyle: "dashed",
+				borderColor: "#aaa",
 			}}
 		>
-			<Typography variant="h6" mb={1}>
-				{item.name}
-			</Typography>
+			<Typography variant="h6">{item.name}</Typography>
 			<Grid container>
 				<Grid
 					item
@@ -73,7 +74,7 @@ export default function CartSummaryItem({ item }) {
 							>
 								S${item.usualPrice}
 							</Typography>{" "}
-							<Typography variant="body1" color="red">
+							<Typography variant="body1" color="error">
 								S${item.currentPrice}
 							</Typography>
 						</>

@@ -45,15 +45,16 @@ export default function CartItem({ item }) {
 	return (
 		<Box
 			sx={{
-				px: 5,
-				pt: 2,
-				pb: 2,
-				borderBottom: "1px dotted #cacaca",
+				mx: 3,
+				px: 1,
+				pt: 3,
+				pb: 3,
+				borderWidth: "1px",
+				borderBottomStyle: "dashed",
+				borderColor: "#aaa",
 			}}
 		>
-			<Typography variant="h6" mb={1}>
-				{item.name}
-			</Typography>
+			<Typography variant="h6">{item.name}</Typography>
 			<Grid container alignItems="center">
 				<Grid
 					item
@@ -78,8 +79,6 @@ export default function CartItem({ item }) {
 					sx={{
 						px: { xs: 1, sm: 2 },
 						textAlign: { sm: "center" },
-						// borderLeft: { sm: "1px dotted #cacaca" },
-						// borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
 					{item.currentPrice === item.usualPrice ? (
@@ -92,7 +91,7 @@ export default function CartItem({ item }) {
 							>
 								S${item.usualPrice}
 							</Typography>{" "}
-							<Typography variant="body1" color="red">
+							<Typography variant="body1" color="error">
 								S${item.currentPrice}
 							</Typography>
 						</>
@@ -105,7 +104,6 @@ export default function CartItem({ item }) {
 					sx={{
 						px: { xs: 1, sm: 2 },
 						textAlign: { sm: "center" },
-						// borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
 					<EditItemQuantity

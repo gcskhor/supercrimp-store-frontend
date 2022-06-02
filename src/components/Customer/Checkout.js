@@ -81,8 +81,9 @@ export default function Checkout() {
 				variant="button"
 				fontSize="large"
 				fontWeight="bold"
+				color="primary"
 				display="block"
-				mb={3}
+				mb={2}
 				px={1}
 			>
 				User Details
@@ -98,8 +99,9 @@ export default function Checkout() {
 					variant="button"
 					fontSize="large"
 					fontWeight="bold"
+					color="primary"
 					display="block"
-					mb={3}
+					mb={2}
 					px={1}
 				>
 					Review your cart
@@ -109,7 +111,7 @@ export default function Checkout() {
 					direction={{ xs: "column", sm: "row" }}
 					justifyContent="space-between"
 					spacing={2}
-					sx={{ mb: 5 }}
+					sx={{ mt: 5, mb: 5 }}
 				>
 					<Button variant="outlined" size="small" href="/cart">
 						Back to cart

@@ -28,7 +28,7 @@ export default function Cart() {
 						direction={{ xs: "column", sm: "row" }}
 						justifyContent="space-between"
 						spacing={2}
-						sx={{ mb: 5 }}
+						sx={{ mt: 5, mb: 5 }}
 					>
 						<Button variant="outlined" size="small" href="/">
 							Continue shopping

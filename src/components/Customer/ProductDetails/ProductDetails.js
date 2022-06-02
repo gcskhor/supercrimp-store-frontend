@@ -25,7 +25,7 @@ export default function ProductDetails({
 
 	function Header({ title }) {
 		return (
-			<Typography variant="button" fontWeight="bold">
+			<Typography variant="button" fontWeight="bold" color="primary.light">
 				{title}
 			</Typography>
 		);
@@ -79,7 +79,9 @@ export default function ProductDetails({
 
 	return (
 		<Stack spacing={3} sx={styles}>
-			<Typography variant="h3">{product.name}</Typography>
+			<Typography variant="h3" color="primary">
+				{product.name}
+			</Typography>
 			<Price product={product} />
 			{!isTotallyEmpty && <ProductInfo />}
 			<hr style={{ border: 0, height: 1, backgroundColor: "#cacaca" }} />
