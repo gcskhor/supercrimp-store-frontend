@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Button from "@mui/material/Button";
 import Snackbar from "@mui/material/Snackbar";
 import IconButton from "@mui/material/IconButton";
 import CloseIcon from "@mui/icons-material/Close";
@@ -10,7 +9,6 @@ export default function Snackbars() {
 		snackPackContext,
 		snackPackOpenContext,
 		snackPackMessageInfoContext,
-		enableSnackBar,
 	} = useSnackbarContext();
 
 	const [snackPack, setSnackPack] = snackPackContext;
@@ -28,7 +26,14 @@ export default function Snackbars() {
 			// Close an active snack when a new one is added
 			setSnackPackOpen(false);
 		}
-	}, [snackPack, snackPackMessageInfo, snackPackOpen]);
+	}, [
+		setSnackPack,
+		setSnackPackMessageInfo,
+		setSnackPackOpen,
+		snackPack,
+		snackPackMessageInfo,
+		snackPackOpen,
+	]);
 
 	const handleClose = (event, reason) => {
 		if (reason === "clickaway") {

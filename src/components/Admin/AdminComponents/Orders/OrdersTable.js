@@ -10,7 +10,7 @@ import OrdersProductCell from "./OrdersProductCell";
 import OrderDialog from "./OrderDialog";
 import axios from "axios";
 import { BACKEND_URL } from "../../../../store.js";
-import { useSnackbarContext } from "../../../SnackbarContext";
+import { useSnackbarContext } from "../../../SnackbarContext.js";
 
 export default function OrdersTable({ type }) {
 	const { pendingOrdersContext, completedOrdersContext } =

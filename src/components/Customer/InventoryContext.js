@@ -1,7 +1,6 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { BACKEND_URL } from "../../store.js";
-import { useSnackbarContext } from "../../components/SnackbarContext.js";
 
 axios.defaults.withCredentials = true;
 
@@ -14,7 +13,6 @@ export function useInventoryContext() {
 export function InventoryContextProvider({ children }) {
 	const [products, setProducts] = useState([]);
 	const [availableColours, setAvailableColours] = useState([]);
-	const { enableSnackBar } = useSnackbarContext();
 
 	useEffect(() => {
 		axios
@@ -24,7 +22,6 @@ export function InventoryContextProvider({ children }) {
 			})
 			.catch((error) => {
 				console.log(error.message);
-				enableSnackBar(error.response.data)();
 			});
 
 		axios
@@ -34,7 +31,6 @@ export function InventoryContextProvider({ children }) {
 			})
 			.catch((error) => {
 				console.log(error.message);
-				enableSnackBar(error.response.data)();
 			});
 	}, []);
 
