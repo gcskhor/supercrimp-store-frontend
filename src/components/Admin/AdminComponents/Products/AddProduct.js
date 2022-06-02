@@ -182,7 +182,7 @@ export default function AddProduct() {
 					/>
 				</FormGroup>
 				<Box>
-					<Box>Colours</Box>
+					<Typography variant="button">Colours</Typography>
 					{allColours.map((colour) => {
 						return (
 							<FormGroup key={colour.name}>
@@ -214,7 +214,7 @@ export default function AddProduct() {
 				</Button>
 				<Button
 					fullWidth
-					variant="contained"
+					variant="outlined"
 					component={Link}
 					to={`/admin/products`}
 				>

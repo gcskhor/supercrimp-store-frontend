@@ -10,6 +10,9 @@ import {
 	Checkbox,
 	FormGroup,
 	FormControlLabel,
+	Stack,
+	Container,
+	Typography,
 } from "@mui/material";
 import { useSnackbarContext } from "../../../SnackbarContext.js";
 
@@ -123,151 +126,145 @@ export default function EditProduct() {
 
 	return (
 		product && (
-			<Box component="form">
-				<TextField
-					label="Product Name"
-					placeholder="Product Name"
-					variant="filled"
-					fullWidth
-					onChange={(event) => {
-						setName(event.target.value);
-					}}
-					value={name}
-				/>
-				<TextField
-					label="Description"
-					placeholder="Description"
-					variant="filled"
-					multiline
-					rows={4}
-					fullWidth
-					onChange={(event) => {
-						setDescription(event.target.value);
-					}}
-					value={description}
-				/>
-				<TextField
-					label="Features"
-					placeholder="Features"
-					variant="filled"
-					multiline
-					rows={2}
-					fullWidth
-					onChange={(event) => {
-						setFeatures(event.target.value);
-					}}
-					value={features}
-				/>
-				<TextField
-					label="Outer Dimensions"
-					placeholder="Outer Dimensions"
-					variant="filled"
-					multiline
-					rows={1}
-					fullWidth
-					onChange={(event) => {
-						setOuterDimensions(event.target.value);
-					}}
-					value={outerDimensions}
-				/>
-				<TextField
-					label="Mounting"
-					placeholder="Mounting"
-					variant="filled"
-					multiline
-					rows={4}
-					fullWidth
-					onChange={(event) => {
-						setMounting(event.target.value);
-					}}
-					value={mounting}
-				/>
-				<TextField
-					label="Materials"
-					placeholder="Materials"
-					variant="filled"
-					multiline
-					rows={4}
-					fullWidth
-					onChange={(event) => {
-						setMaterials(event.target.value);
-					}}
-					value={materials}
-				/>
-				<TextField
-					label="Usual Price (SGD)"
-					placeholder="Usual Price (SGD)"
-					variant="filled"
-					fullWidth
-					onChange={(event) => {
-						setUsualPrice(event.target.value);
-					}}
-					value={usualPrice}
-				/>
-				<TextField
-					label="Current Price (SGD)"
-					placeholder="Current Price (SGD)"
-					variant="filled"
-					fullWidth
-					onChange={(event) => {
-						setCurrentPrice(event.target.value);
-					}}
-					value={currentPrice}
-				/>
-				<FormGroup>
-					<FormControlLabel
-						control={
-							<Checkbox
-								label="Available"
-								labelplacement="start"
-								checked={available}
-								onChange={(event) => setAvailable(event.target.checked)}
-							/>
-						}
-						label="Available"
+			<Container>
+				<Stack component="form" spacing={3}>
+					<TextField
+						label="Product Name"
+						variant="filled"
+						fullWidth
+						onChange={(event) => {
+							setName(event.target.value);
+						}}
+						value={name}
 					/>
-				</FormGroup>
-				<Box>
-					<Box>Colours</Box>
-					{allColours.map((colour) => {
-						return (
-							<FormGroup key={colour.name}>
-								<FormControlLabel
-									control={
-										<Checkbox
-											label={colour.name}
-											labelplacement="start"
-											checked={isChecked(colour)}
-											onChange={(event) => {
-												handleColourOnChange(event, colour);
-											}}
-										/>
-									}
-									label={colour.name}
+					<TextField
+						label="Description"
+						variant="filled"
+						multiline
+						rows={4}
+						fullWidth
+						onChange={(event) => {
+							setDescription(event.target.value);
+						}}
+						value={description}
+					/>
+					<TextField
+						label="Features"
+						variant="filled"
+						multiline
+						rows={2}
+						fullWidth
+						onChange={(event) => {
+							setFeatures(event.target.value);
+						}}
+						value={features}
+					/>
+					<TextField
+						label="Outer Dimensions"
+						variant="filled"
+						multiline
+						rows={1}
+						fullWidth
+						onChange={(event) => {
+							setOuterDimensions(event.target.value);
+						}}
+						value={outerDimensions}
+					/>
+					<TextField
+						label="Mounting"
+						variant="filled"
+						multiline
+						rows={4}
+						fullWidth
+						onChange={(event) => {
+							setMounting(event.target.value);
+						}}
+						value={mounting}
+					/>
+					<TextField
+						label="Materials"
+						variant="filled"
+						multiline
+						rows={4}
+						fullWidth
+						onChange={(event) => {
+							setMaterials(event.target.value);
+						}}
+						value={materials}
+					/>
+					<TextField
+						label="Usual Price (SGD)"
+						variant="filled"
+						fullWidth
+						onChange={(event) => {
+							setUsualPrice(event.target.value);
+						}}
+						value={usualPrice}
+					/>
+					<TextField
+						label="Current Price (SGD)"
+						variant="filled"
+						fullWidth
+						onChange={(event) => {
+							setCurrentPrice(event.target.value);
+						}}
+						value={currentPrice}
+					/>
+					<FormGroup>
+						<FormControlLabel
+							control={
+								<Checkbox
+									label="Available"
+									labelplacement="start"
+									checked={available}
+									onChange={(event) => setAvailable(event.target.checked)}
 								/>
-							</FormGroup>
-						);
-					})}
-				</Box>
+							}
+							label="Available"
+						/>
+					</FormGroup>
+					<Box>
+						<Typography variant="button">Colours</Typography>
+						{allColours.map((colour) => {
+							return (
+								<FormGroup key={colour.name}>
+									<FormControlLabel
+										control={
+											<Checkbox
+												label={colour.name}
+												labelplacement="start"
+												checked={isChecked(colour)}
+												onChange={(event) => {
+													handleColourOnChange(event, colour);
+												}}
+											/>
+										}
+										label={colour.name}
+									/>
+								</FormGroup>
+							);
+						})}
+					</Box>
 
-				<Button
-					fullWidth
-					variant="contained"
-					component={Link}
-					to={`/admin/products`}
-					onClick={handleUpdate}
-				>
-					Update Product
-				</Button>
-				<Button
-					fullWidth
-					variant="contained"
-					component={Link}
-					to={`/admin/products`}
-				>
-					Back
-				</Button>
-			</Box>
+					<Button
+						fullWidth
+						variant="contained"
+						component={Link}
+						to={`/admin/products`}
+						onClick={handleUpdate}
+					>
+						Update Product
+					</Button>
+					<Button
+						fullWidth
+						variant="outlined"
+						component={Link}
+						to={`/admin/products`}
+					>
+						Back
+					</Button>
+				</Stack>
+			</Container>
 		)
 	);
 }
