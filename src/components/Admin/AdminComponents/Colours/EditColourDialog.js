@@ -84,7 +84,6 @@ export default function EditColourDialog() {
 				<DialogTitle>Edit Colour</DialogTitle>
 				<DialogContent>
 					<TextField
-						autoFocus
 						margin="dense"
 						id="name"
 						label="Name"
@@ -95,7 +94,6 @@ export default function EditColourDialog() {
 						onChange={(event) => setName(event.target.value)}
 					/>
 					<TextField
-						autoFocus
 						margin="dense"
 						id="code"
 						label="Colour Code"
@@ -120,8 +118,12 @@ export default function EditColourDialog() {
 					</FormGroup>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleSubmit}>Submit</Button>
-					<Button onClick={handleClose}>Close</Button>
+					<Button variant="outlined" onClick={handleClose}>
+						Close
+					</Button>
+					<Button variant="contained" onClick={handleSubmit}>
+						Submit
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>

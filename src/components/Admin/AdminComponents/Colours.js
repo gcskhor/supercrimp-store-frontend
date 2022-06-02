@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Box, Button } from "@mui/material";
+import { Container, Typography, Button } from "@mui/material";
 import { BACKEND_URL } from "../../../store";
 import { ColourContext } from "./Colours/ColourContext.js";
 import ColoursTable from "./Colours/ColoursTable.js";
@@ -30,7 +30,7 @@ export default function Colours() {
 		reloadColours(setColours, BACKEND_URL);
 	}, []);
 	return (
-		<Box>
+		<Container maxWidth="lg">
 			<ColourContext.Provider
 				value={{
 					coloursContext: [colours, setColours],
@@ -40,7 +40,9 @@ export default function Colours() {
 					openDeleteDialogContext: [openDeleteDialog, setOpenDeleteDialog],
 				}}
 			>
-				<h2>Colours</h2>
+				<Typography variant="h4" fontWeight="bold" pb={3}>
+					Colours
+				</Typography>{" "}
 				<ColoursTable />
 				<Button
 					fullWidth
@@ -48,6 +50,7 @@ export default function Colours() {
 					onClick={() => {
 						setOpenAddDialog(true);
 					}}
+					sx={{ mt: 3 }}
 				>
 					Add Colour
 				</Button>
@@ -55,6 +58,6 @@ export default function Colours() {
 				{openEditDialog && selectedColour && <EditColourDialog />}
 				{openDeleteDialog && selectedColour && <DeleteColourDialog />}
 			</ColourContext.Provider>
-		</Box>
+		</Container>
 	);
 }
