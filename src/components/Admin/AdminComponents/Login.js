@@ -1,8 +1,9 @@
 import React, { useState } from "react";
-import { Button, Box, CardMedia, Grid, TextField } from "@mui/material";
+import { Button, Box, CardMedia, Grid, TextField, Stack } from "@mui/material";
 import { BACKEND_URL } from "../../../store";
 import { useSnackbarContext } from "../../SnackbarContext.js";
 import axios from "axios";
+import { Container } from "@mui/system";
 
 export default function Login() {
 	const [email, setEmail] = useState("");
@@ -24,57 +25,42 @@ export default function Login() {
 	};
 
 	return (
-		<Box>
-			<Grid container justifyContent="center">
-				<Grid
-					item
-					xs={10}
-					sm={5}
-					md={3}
-					m={2}
-					pt={5}
-					justifyContent="center"
-					alignItems="flex-start"
+		<Container maxWidth="xs">
+			<Stack spacing={2} sx={{ height: "100vh", justifyContent: "center" }}>
+				<CardMedia
+					component="img"
+					image="/images/logos/SUPERCRIMP-logo-black.png"
+					alt=""
+				/>
+				<TextField
+					label="Email Address"
+					variant="filled"
+					onChange={(event) => {
+						setEmail(event.target.value);
+					}}
+					value={email}
+					fullWidth
+				/>
+				<TextField
+					label="Password"
+					type="password"
+					variant="filled"
+					onChange={(event) => {
+						setPassword(event.target.value);
+					}}
+					value={password}
+					fullWidth
+				/>
+				<Button
+					variant="contained"
+					onClick={() => {
+						handleLogin();
+					}}
+					fullWidth
 				>
-					<CardMedia
-						component="img"
-						image="/images/logos/SUPERCRIMP-logo-black.png"
-						alt=""
-						xs={12}
-					/>
-					<Box justifyContent="center"></Box>
-					<TextField
-						label="Email Address"
-						placeholder="admin@supercrimp.com"
-						variant="filled"
-						onChange={(event) => {
-							setEmail(event.target.value);
-						}}
-						value={email}
-						fullWidth
-					/>
-					<TextField
-						label="Password"
-						type="password"
-						placeholder="*********"
-						variant="filled"
-						onChange={(event) => {
-							setPassword(event.target.value);
-						}}
-						value={password}
-						fullWidth
-					/>
-					<Button
-						variant="contained"
-						onClick={() => {
-							handleLogin();
-						}}
-						fullWidth
-					>
-						Log In
-					</Button>
-				</Grid>
-			</Grid>
-		</Box>
+					Log In
+				</Button>
+			</Stack>
+		</Container>
 	);
 }

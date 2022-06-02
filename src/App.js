@@ -16,7 +16,7 @@ import EditProduct from "./components/Admin/AdminComponents/Products/EditProduct
 import Colours from "./components/Admin/AdminComponents/Colours.js";
 import Checkout from "./components/Customer/Checkout.js";
 import OrderSuccess from "./components/Customer/OrderSuccess.js";
-import Login from "./components/Admin/AdminComponents/Login.js";
+import LoginPage from "./components/Admin/AdminComponents/LoginPage.js";
 
 export default function App() {
 	return (
@@ -38,7 +38,7 @@ export default function App() {
 							}
 						/>
 					</Route>
-					<Route path="/admin/login" element={<Login />} />
+					<Route path="/admin/login" element={<LoginPage />} />
 					<Route path="/admin" element={<Admin />}>
 						<Route path="products" element={<Products />} />
 						<Route path="product">
