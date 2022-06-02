@@ -1,4 +1,5 @@
 import React from "react";
+import { Box } from "@mui/material";
 import AliceCarousel from "react-alice-carousel";
 import "react-alice-carousel/lib/alice-carousel.css";
 
@@ -44,25 +45,27 @@ export default function ProductCarousel({ product }) {
 	}, [product.name]);
 
 	return (
-		<AliceCarousel
-			infinite
-			mouseTracking
-			responsive={{ 0: { items: 1 } }}
-			controlsStrategy="alternate"
-			renderPrevButton={({ isDisabled }) => (
-				<IconButton size="small">
-					<KeyboardArrowLeftRounded />
-				</IconButton>
-			)}
-			renderNextButton={({ isDisabled }) => (
-				<IconButton size="small">
-					<KeyboardArrowRightRounded />
-				</IconButton>
-			)}
-		>
-			{images.map((img) => (
-				<CardMedia component="img" image={img} alt="" />
-			))}
-		</AliceCarousel>
+		<Box sx={{ my: { xs: 1, sm: 5 }, pr: { xs: 1, sm: 1 } }}>
+			<AliceCarousel
+				infinite
+				mouseTracking
+				responsive={{ 0: { items: 1 } }}
+				controlsStrategy="alternate"
+				renderPrevButton={({ isDisabled }) => (
+					<IconButton size="small">
+						<KeyboardArrowLeftRounded />
+					</IconButton>
+				)}
+				renderNextButton={({ isDisabled }) => (
+					<IconButton size="small">
+						<KeyboardArrowRightRounded />
+					</IconButton>
+				)}
+			>
+				{images.map((img) => (
+					<CardMedia component="img" image={img} alt="" />
+				))}
+			</AliceCarousel>
+		</Box>
 	);
 }

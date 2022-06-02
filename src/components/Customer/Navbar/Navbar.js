@@ -16,12 +16,13 @@ export default function Navbar() {
 				display: "flex",
 				justifyContent: "space-between",
 				alignItems: "center",
+				px: { xs: 2, sm: 5 },
 			}}
 		>
 			<Button component={HomeRouterLink}>
 				<CardMedia
 					component="img"
-					image="/images/logos/SUPERCRIMP-logo.png"
+					image="/images/logos/SUPERCRIMP-logo-black.png"
 					alt=""
 					sx={{ my: 1, height: { xs: 70, sm: 90 } }}
 				/>

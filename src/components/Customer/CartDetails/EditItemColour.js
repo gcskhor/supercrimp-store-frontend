@@ -43,7 +43,7 @@ export default function EditItemColour({
 				<ListItem button onClick={handleClickListItem} sx={{ p: 0 }}>
 					<ListItemText
 						primary={selectedColour?.name}
-						primaryTypographyProps={{ variant: "button" }}
+						primaryTypographyProps={{ variant: "cartItemColour" }}
 						secondary="Click to change colour"
 					/>
 				</ListItem>
@@ -54,6 +54,7 @@ export default function EditItemColour({
 						key={`${item.productId}-${colour.name}`}
 						selected={colour.id === selectedColour.id}
 						onClick={(event) => handleMenuItemClick(event, colour)}
+						sx={{ textTransform: "capitalize" }}
 					>
 						{colour.name}
 					</MenuItem>
