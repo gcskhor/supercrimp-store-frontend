@@ -7,7 +7,7 @@ const images = [
 	{
 		url: "/images/tri-hard/trihard_4.jpeg",
 		title: "FINGER-TRAINING ON THE GO",
-		subtitle: "No gyms nearby? No problem. Train anywhere",
+		subtitle: "No walls nearby? No problem. Train anywhere",
 	},
 	{
 		url: "/images/tri-hard/trihard_2.jpeg",
