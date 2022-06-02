@@ -1,4 +1,10 @@
-import { Button, ButtonGroup, Stack, Typography } from "@mui/material";
+import {
+	Button,
+	ButtonGroup,
+	IconButton,
+	Stack,
+	Typography,
+} from "@mui/material";
 import {
 	AddCircleOutlineRounded,
 	RemoveCircleOutlineRounded,
@@ -41,14 +47,14 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 			alignItems={{ xs: "center", sm: "center" }}
 			direction={{ xs: "row", sm: "column" }}
 		>
-			<Typography variant="button">Qty: {quantity}</Typography>
-			<ButtonGroup variant="text" size="small">
-				<Button onClick={handleDecreaseQty}>
-					<RemoveCircleOutlineRounded />
-				</Button>
-				<Button onClick={handleIncreaseQty}>
-					<AddCircleOutlineRounded />
-				</Button>
+			<Typography variant="cartItemQty">Qty: {quantity}</Typography>
+			<ButtonGroup>
+				<IconButton onClick={handleDecreaseQty} sx={{ color: "primary.light" }}>
+					<RemoveCircleOutlineRounded fontSize="small" />
+				</IconButton>
+				<IconButton onClick={handleIncreaseQty} sx={{ color: "primary.light" }}>
+					<AddCircleOutlineRounded fontSize="small" />
+				</IconButton>
 			</ButtonGroup>
 		</Stack>
 	);

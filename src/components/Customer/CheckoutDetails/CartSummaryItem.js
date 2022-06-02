@@ -51,7 +51,7 @@ export default function CartSummaryItem({ item }) {
 						px: { xs: 1, sm: 0 },
 					}}
 				>
-					<Typography variant="button">{item.colour}</Typography>
+					<Typography variant="cartItemColour">{item.colour}</Typography>
 				</Grid>
 				<Grid
 					item
@@ -90,7 +90,7 @@ export default function CartSummaryItem({ item }) {
 						borderRight: { sm: "1px dotted #cacaca" },
 					}}
 				>
-					<Typography variant="body1">Qty: {item.quantity}</Typography>
+					<Typography variant="cartItemQty">Qty: {item.quantity}</Typography>
 				</Grid>
 				<Grid
 					item

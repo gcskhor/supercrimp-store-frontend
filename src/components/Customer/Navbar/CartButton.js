@@ -16,11 +16,11 @@ export default function Navbar() {
 			startIcon={<ShoppingCartOutlined />}
 			size="large"
 			sx={{
-				py: 2,
-				px: 3,
-				mx: { xs: 3, sm: 5 },
-				borderRadius: 50,
-				color: "white",
+				py: { xs: 2, sm: 2 },
+				pl: { xs: 1.5, sm: 3 },
+				pr: { xs: 1, sm: 3 },
+				borderRadius: 30,
+				color: "black",
 				fontWeight: "bold",
 				"&:hover": {
 					backgroundColor: "secondary.light",

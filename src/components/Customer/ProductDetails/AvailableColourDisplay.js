@@ -57,8 +57,8 @@ export default function AvailableColourDisplay({
 	}
 
 	return (
-		<Box mt={2}>
-			<Typography variant="body1" color="text.secondary">
+		<Box mt={3}>
+			<Typography variant="availableColoursTitle">
 				{selectedColour
 					? `Available colours (selected: ${selectedColour.name})`
 					: "Available colours (click to select)"}

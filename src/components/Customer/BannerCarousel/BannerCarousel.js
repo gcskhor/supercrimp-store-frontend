@@ -31,25 +31,29 @@ export default function BannerCarousel() {
 			<Card
 				sx={{
 					backgroundImage: `url(${img.url})`,
-					height: { xs: "50vh", sm: "70vh" },
+					height: { xs: "60vh", sm: "70vh" },
 					backgroundPosition: "center",
 					backgroundSize: "cover",
 				}}
 			>
 				<CardContent
 					sx={{
-						backgroundColor: "rgba(255,255,255,0.4)",
+						backgroundColor: "rgba(255,255,255,0.5)",
 						height: "100%",
 						display: "flex",
 						justifyContent: "center",
 						alignItems: "center",
 					}}
 				>
-					<Stack spacing={2} sx={{ width: "50%" }}>
-						<Typography variant="h3" align="center" fontWeight="bold">
+					<Stack
+						spacing={2}
+						alignItems="center"
+						sx={{ width: "50%", mt: 3, mb: 5 }}
+					>
+						<Typography variant="bannerTitle" align="center" fontWeight="bold">
 							{img.title}
 						</Typography>
-						<Typography variant="h5" align="center">
+						<Typography variant="bannerSubtitle" align="center">
 							{img.subtitle}
 						</Typography>
 					</Stack>

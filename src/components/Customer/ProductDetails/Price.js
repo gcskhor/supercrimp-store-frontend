@@ -5,11 +5,11 @@ export default function Price({ product }) {
 
 	return (
 		<Box my={1}>
-			<Typography variant="h5" fontWeight="bold" color={promoPrice && "error"}>
+			<Typography variant="currentPrice" color={promoPrice && "error"}>
 				S${product.currentPrice}
 			</Typography>
 			{promoPrice && (
-				<Typography variant="h6" color="text.secondary">
+				<Typography variant="usualPrice">
 					(Usual price: S${product.usualPrice})
 				</Typography>
 			)}

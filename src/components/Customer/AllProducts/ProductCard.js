@@ -46,7 +46,11 @@ export default function ProductSummary({ productDetails }) {
 					</a>
 				)}
 				<CardContent>
-					<Link variant="h4" href={`/product/${id}`} underline="none">
+					<Link
+						variant="productCardName"
+						href={`/product/${id}`}
+						underline="none"
+					>
 						{name}
 					</Link>
 					<Price product={productDetails} />
