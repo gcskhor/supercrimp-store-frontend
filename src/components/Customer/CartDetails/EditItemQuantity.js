@@ -19,7 +19,7 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 		cartDispatch(
 			editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 		);
-		enableSnackBar("Incremented item quantity")();
+		enableSnackBar("Increased item quantity")();
 	};
 
 	const handleDecreaseQty = () => {
@@ -29,7 +29,7 @@ export default function EditItemQuantity({ item, quantity, setQuantity }) {
 			cartDispatch(
 				editItemQty(item.productId, item.colourId, item.currentPrice, newQty)
 			);
-			enableSnackBar("Decremented item quantity")();
+			enableSnackBar("Decreased item quantity")();
 		} else {
 			cartDispatch(removeItemFromCart(item.productId, item.colourId));
 			enableSnackBar("Removed item from cart")();

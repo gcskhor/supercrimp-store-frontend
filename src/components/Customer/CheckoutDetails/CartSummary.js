@@ -19,7 +19,7 @@ export default function CartSummary() {
 	}
 
 	return (
-		<Card sx={{ pb: 3, mb: 3 }}>
+		<Card sx={{ pb: 3, mb: 5, boxShadow: 3 }}>
 			<CartItemsList />
 			<Grid container sx={{ px: 5, mt: 3 }}>
 				<Grid item xs={12} sm></Grid>

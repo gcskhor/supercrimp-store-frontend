@@ -61,27 +61,35 @@ export default function CheckoutSuccess() {
 
 	function UserDetails() {
 		return (
-			<Grid container spacing={2} mt={1} mb={4}>
+			<Grid container spacing={1} mt={1} mb={4} px={3}>
 				<Grid item sm={2}>
-					<Typography variant="button">Name:</Typography>
+					<Typography variant="button" fontWeight="bold">
+						Name:
+					</Typography>
 				</Grid>
 				<Grid item sm={10}>
 					{orderDetails.user.name}
 				</Grid>
 				<Grid item sm={2}>
-					<Typography variant="button">Email:</Typography>
+					<Typography variant="button" fontWeight="bold">
+						Email:
+					</Typography>
 				</Grid>
 				<Grid item sm={10}>
 					{orderDetails.user.email}
 				</Grid>
 				<Grid item sm={2}>
-					<Typography variant="button">Phone:</Typography>
+					<Typography variant="button" fontWeight="bold">
+						Phone:
+					</Typography>
 				</Grid>
 				<Grid item sm={10}>
 					{orderDetails.user.phone}
 				</Grid>
 				<Grid item sm={2}>
-					<Typography variant="button">Address:</Typography>
+					<Typography variant="button" fontWeight="bold">
+						Address:
+					</Typography>
 				</Grid>
 				<Grid item sm={10}>
 					{orderDetails.user.addressLine1}
@@ -105,18 +113,28 @@ export default function CheckoutSuccess() {
 					<Typography py={3} variant="h3">
 						Checkout Success!
 					</Typography>
-					<Typography variant="h5" display="block" mb={3} px={1}>
+					<Typography
+						variant="button"
+						fontSize="large"
+						fontWeight="bold"
+						color="primary"
+						display="block"
+						mb={2}
+						px={1}
+					>
 						Order Details
 					</Typography>
 					<Typography variant="body1" px={1}>
-						Below are your order details.
+						Your order details have been sent to your email.
 					</Typography>
-					<Card sx={{ my: 5, py: 2, px: 2 }}>
+					<Card sx={{ my: 5, py: 3, px: 2, boxShadow: 3 }}>
 						<Typography
 							variant="button"
 							fontSize="large"
 							fontWeight="bold"
 							display="block"
+							color="primary"
+							px={2}
 						>
 							Order ID: {orderDetails.id}
 						</Typography>
@@ -143,7 +161,7 @@ export default function CheckoutSuccess() {
 				direction={{ xs: "column", sm: "row" }}
 				justifyContent="space-between"
 				spacing={2}
-				sx={{ mb: 5 }}
+				sx={{ mt: 5, mb: 5 }}
 			>
 				<Button variant="contained" size="small" href="/">
 					Back to home

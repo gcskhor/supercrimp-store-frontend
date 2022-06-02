@@ -16,7 +16,7 @@ export default function DeleteItem({ item }) {
 	};
 
 	return (
-		<IconButton onClick={handleDeleteItem} color="warning" size="small">
+		<IconButton onClick={handleDeleteItem} color="error" size="small">
 			<DeleteOutlineRounded />
 		</IconButton>
 	);

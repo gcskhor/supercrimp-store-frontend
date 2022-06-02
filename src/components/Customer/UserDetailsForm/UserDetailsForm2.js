@@ -68,7 +68,7 @@ export default function UserDetailsForm({
 	};
 
 	return (
-		<Card sx={{ px: 5, pt: 3, pb: 5, mb: 5 }}>
+		<Card sx={{ px: 5, pt: 3, pb: 5, mb: 5, boxShadow: 3 }}>
 			<Grid container spacing={2}>
 				<Grid item container alignItems="center" spacing={2}>
 					<Grid item xs={12} sm={4}>

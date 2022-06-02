@@ -5,7 +5,7 @@ export default function Price({ product }) {
 
 	return (
 		<Box my={1}>
-			<Typography variant="h5" fontWeight="bold" color={promoPrice && "red"}>
+			<Typography variant="h5" fontWeight="bold" color={promoPrice && "error"}>
 				S${product.currentPrice}
 			</Typography>
 			{promoPrice && (
