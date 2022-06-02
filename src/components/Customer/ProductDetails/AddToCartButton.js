@@ -1,5 +1,6 @@
 import { Box, Tooltip, Button } from "@mui/material";
 import { useCartContext } from "../CartContext.js";
+import { useSnackbarContext } from "../SnackbarContext.js";
 
 export default function AddToCartButton({
 	productDetails,
@@ -11,10 +12,15 @@ export default function AddToCartButton({
 		dispatchHelpers: [, addItemToCart],
 	} = useCartContext();
 
+	const { enableSnackBar } = useSnackbarContext();
+
 	const handleAddToCart = () => {
 		if (selectedColour) {
 			cartDispatch(addItemToCart(productDetails, selectedColour.id, 1));
 			setSelectedColour(null);
+			enableSnackBar("Item has been added to cart")();
+		} else {
+			enableSnackBar("Please select a colour before adding to cart")();
 		}
 	};
 

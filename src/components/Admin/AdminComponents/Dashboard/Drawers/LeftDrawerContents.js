@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import {
 	Toolbar,
@@ -19,17 +19,13 @@ import { Link } from "react-router-dom";
 
 import { BACKEND_URL } from "../../../../../store.js";
 
+import LogoutDialog from "../../Logout/LogoutDialog.js";
+
 export default function LeftDrawerContents() {
+	const [showLogoutDialog, setShowLogoutDialog] = useState(false);
+
 	const handleLogout = () => {
-		axios
-			.post(`${BACKEND_URL}/admin/logout`)
-			.then((response) => {
-				console.log(response);
-				console.log("cleared cookies");
-			})
-			.catch((err) => {
-				console.log(err);
-			});
+		setShowLogoutDialog(true);
 	};
 
 	return (
@@ -86,8 +82,6 @@ export default function LeftDrawerContents() {
 
 				<ListItem
 					key="admin-logout-leftdrawer"
-					component={Link}
-					to="/admin/login"
 					sx={{ color: "black" }}
 					disablePadding
 					onClick={handleLogout}
@@ -100,6 +94,12 @@ export default function LeftDrawerContents() {
 					</ListItemButton>
 				</ListItem>
 			</List>
+			{showLogoutDialog && (
+				<LogoutDialog
+					setShowLogoutDialog={setShowLogoutDialog}
+					showLogoutDialog={showLogoutDialog}
+				/>
+			)}
 		</div>
 	);
 }

@@ -47,6 +47,15 @@ export default function App() {
 						</Route>
 						<Route path="colours" element={<Colours />} />
 					</Route>
+					<Route path="colours" element={<Colours />} />
+					<Route
+						path="*"
+						element={
+							<main>
+								<p>There's nothing here!</p>
+							</main>
+						}
+					/>
 				</Routes>
 			</BrowserRouter>
 		</ThemeContextProvider>
