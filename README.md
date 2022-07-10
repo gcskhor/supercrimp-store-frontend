@@ -1,70 +1,103 @@
-# Getting Started with Create React App
+# SUPERCRIMP E-Commerce Platform
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="./public/images/logos/SUPERCRIMP-logo.png">
+  <source media="(prefers-color-scheme: light)" srcset="./public/images/logos/SUPERCRIMP-logo-black.png">
+  <img alt="SUPERCRIMP Logo" src="./public/images/logos/SUPERCRIMP-logo-black.png">
+</picture>
 
-## Available Scripts
+SUPERCRIMP is an existing, small, local business that sells 3D-printed crimp holds for rock-climbing enthusiasts.
 
-In the project directory, you can run:
+At the time of starting this project, the business hadn’t been able to find an appropriate website to host its online store, with some e-commerce platforms falling short of features and others being too complicated or expensive for a simple business.
 
-### `npm start`
+Thus, the goal of this project was to build a customised online store that meets the needs of SUPERCRIMP’s stakeholders:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+**For customers**
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- It must be convenient to browse and make purchases.
+- They must be able to pay securely online.
 
-### `npm test`
+**For the business owner**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- It must be easy to view order details and mark them as complete.
+- It must be easy to add, update and delete product listings.
 
-### `npm run build`
+## Website
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Coming soon
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Features
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+<!-- To be fleshed out with screenshots later -->
 
-### `npm run eject`
+### Customer
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+**Browsing product catalogue**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+1. On the home page, customer can see the list of available products.
+2. Customer can click on each item to view more details on the ℹ️ **Product page**.
+3. Customer can choose to 🛒 **Add to cart** from either view.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+**Making a purchase**
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+1. Customer can confirm their chosen products (including colour and quantity) on the 🛒 **Cart** page. They can click **Continue shopping**, which brings them back to the product catalogue, or **Proceed to checkout**.
+2. At the 💳 **Checkout** page, they will be able to see:
+   - A summary of items in the cart,
+   - Subtotal of all the items,
+   - Additional fees (such as delivery or tax), and
+   - Total cost of this purchase
+3. To proceed with payment, they have to enter their name, email, mobile number, and shipping address.
+4. They will then be redirected to the Stripe platform to make payment.
+5. Upon successful payment, an email will be sent to their email address with the order details.
 
-## Learn More
+### Admin
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Viewing and Marking Orders as Complete**
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. Upon login, admin can see an overview of all Orders (incomplete and complete).
+2. Each order contains the following details:
+   - Items (Product, Quantity of product, Colour)
+   - Total amount
+   - Customer's name
+   - Customer's email
+   - Customer's mobile number
+   - Shipping address
+3. Admin is able to mark an order as complete once the items have been sent out.
 
-### Code Splitting
+**Adding, Updating and Deleting Products and Colours**
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+_Products refer to the different 3D-printed designs. Colours refer to the 3D-printing material._
 
-### Analyzing the Bundle Size
+1. There are overview pages for Products and Colours, where the Admin can view all Products / Colours, as well as delete any unwanted ones.
+2. Admin is able to add a new product, or edit an existing one, with the following details:
+   - Product name
+   - Product description
+   - Colours
+   - Usual price
+   - Current price (for discounts)
+   - Availability
+3. Admin is able to add and edit colours with the following details:
+   - Colour name
+   - Colour hex code
+   - Availability
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Built With
 
-### Making a Progressive Web App
+|               | Tech                | Purpose           |
+| ------------- | ------------------- | ----------------- |
+| Frontend      | **React**           | User interface    |
+|               | **React Router**    | Component routing |
+|               | **Material UI**     | Component library |
+| Backend       | **Node.js**         | Server            |
+|               | **Express**         | Server            |
+|               | **PostgreSQL**      | Database          |
+|               | **Sequelize**       | Database          |
+| Functionality | **Stripe**          | Payment           |
+|               | **JWT**             | Authentication    |
+|               | **Twilio SendGrid** | Email updates     |
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+## Contributors
 
-### Advanced Configuration
+**Elizabeth Tan** | [GitHub](https://github.com/liztanyl/) • [LinkedIn](https://www.linkedin.com/in/elizabethtanyulin/) • [Email](elizabeth.tanyulin@gmail.com)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+**Gerald Khor** | [GitHub](https://github.com/gcskhor/) • [LinkedIn](https://www.linkedin.com/in/gerald-khor/) • [Email](elizabeth.tanyulin@gmail.com)
