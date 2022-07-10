@@ -52,6 +52,10 @@ Coming soon
 
 ### Admin
 
+**Receiving New Orders**
+
+- Upon successful payment for a new order, Admin will receive an email notification with the order details.
+
 **Viewing and Marking Orders as Complete**
 
 1. Upon login, admin can see an overview of all Orders (incomplete and complete).
