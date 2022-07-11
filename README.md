@@ -35,8 +35,24 @@ Coming soon
 **Browsing product catalogue**
 
 1. On the home page, customer can see the list of available products.
+
+   > A scrolling banner gives information about the company and products.
+   > ![SUPERCRIMP homepage and scrolling banner](./public/readme/1_Homepage_Carousel.gif)
+
+   > Available products are listed below the banner.
+   > ![SUPERCRIMP homepage with scrolling banner and products](./public/readme/1_Homepage_Products.gif)
+
 2. Customer can click on each item to view more details on the ℹ️ **Product page**.
+
+   > Ways to navigate to the Product Listing page. Customers can click on the Image, Product Name or View Details button on the Product cards.
+   > ![Ways to navigate to individual Product Listings](./public/readme/1_Homepage_ProductCard.jpg)
+
+   > This is what the Product Listing page looks like.
+   > ![Product listing page](./public/readme/2_ProductListing.jpg)
+
 3. Customer can choose to 🛒 **Add to cart** from either view.
+   > There is snackbar feedback for user actions (bottom left corner).
+   > ![Product listing page](./public/readme/3_Homepage_Add_to_cart.gif)
 
 **Making a purchase**
 
