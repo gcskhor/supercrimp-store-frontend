@@ -1,9 +1,9 @@
 # SUPERCRIMP E-Commerce Platform
 
 <picture>
-  <source media="(prefers-color-scheme: dark)" srcset="./public/images/logos/SUPERCRIMP-logo.png">
-  <source media="(prefers-color-scheme: light)" srcset="./public/images/logos/SUPERCRIMP-logo-black.png">
-  <img alt="SUPERCRIMP Logo" src="./public/images/logos/SUPERCRIMP-logo-black.png">
+  <source media="(prefers-color-scheme: dark)" srcset="./public/readme/logo-white.png">
+  <source media="(prefers-color-scheme: light)" srcset="./public/readme/logo-black.png">
+  <img alt="SUPERCRIMP Logo" src="./public/readme/logo-black.png">
 </picture>
 
 SUPERCRIMP is an existing, small, local business that sells 3D-printed crimp holds for rock-climbing enthusiasts.
