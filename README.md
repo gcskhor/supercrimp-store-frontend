@@ -30,11 +30,9 @@ Coming soon
 
 <!-- To be fleshed out with screenshots later -->
 
-### Customer
+### Browsing product catalogue
 
-**Browsing product catalogue**
-
-1. On the home page, customer can see the list of available products.
+1. On the home page, customers can see the list of available products.
 
    > A scrolling banner gives information about the company and products.
    > ![SUPERCRIMP homepage and scrolling banner](./public/readme/1_Homepage_Carousel.gif)
@@ -42,7 +40,7 @@ Coming soon
    > Available products are listed below the banner.
    > ![SUPERCRIMP homepage with scrolling banner and products](./public/readme/1_Homepage_Products.gif)
 
-2. Customer can click on each item to view more details on the ℹ️ **Product page**.
+2. Customers can click on each item to view more details on the ℹ️ **Product page**.
 
    > Ways to navigate to the Product Listing page. Customers can click on the Image, Product Name or View Details button on the Product cards.
    > ![Ways to navigate to individual Product Listings](./public/readme/1_Homepage_ProductCard.jpg)
@@ -50,21 +48,32 @@ Coming soon
    > This is what the Product Listing page looks like.
    > ![Product listing page](./public/readme/2_ProductListing.jpg)
 
-3. Customer can choose to 🛒 **Add to cart** from either view.
+3. Customers can choose to 🛒 **Add to cart** from either view.
    > There is snackbar feedback for user actions (bottom left corner).
-   > ![Product listing page](./public/readme/3_Homepage_Add_to_cart.gif)
+   > ![Snackbar feedback on adding items to cart or for error messages](./public/readme/3_Homepage_Add_to_cart.gif)
 
-**Making a purchase**
+### Making a purchase
 
-1. Customer can confirm their chosen products (including colour and quantity) on the 🛒 **Cart** page. They can click **Continue shopping**, which brings them back to the product catalogue, or **Proceed to checkout**.
-2. At the 💳 **Checkout** page, they will be able to see:
-   - A summary of items in the cart,
-   - Subtotal of all the items,
-   - Additional fees (such as delivery or tax), and
-   - Total cost of this purchase
-3. To proceed with payment, they have to enter their name, email, mobile number, and shipping address.
-4. They will then be redirected to the Stripe platform to make payment.
-5. Upon successful payment, an email will be sent to their email address with the order details.
+1. Customers can confirm their chosen products (including colour and quantity) on the 🛒 **Cart** page. They can click **Continue shopping**, which brings them back to the product catalogue, or **Proceed to checkout**.
+
+   > They can also edit the items in their cart.
+   > ![Editing items in the cart](./public/readme/4_Cart_editing_items.gif)
+
+   > Clicking "Proceed to Checkout" will bring them to the 💳 **Checkout** page.
+   > ![Moving from Cart to Checkout page](./public/readme/5_Checkout_1.gif)
+
+2. At the 💳 **Checkout** page, customers have to enter their name, email, mobile number, and shipping address. At the bottom, they will be able to see a summary of their order. Clicking "Proceed to Payment Gateway" will redirect them to Stripe to make payment.
+
+   > Customers need to fill out all details before proceeding to make payment via Stripe.
+   > ![Users need to fill in all details before proceeding to make payment](./public/readme/5_Checkout_2.gif)
+
+3. Upon successful payment, customers are brought back to the SUPERCRIMP website, and an email with their order details is sent to their email address.
+
+   > Customers have to provide Stripe with their email address and credit card details. A summary of items in their order is shown on the left of the screen.
+   > ![Preview of the Stripe gateway](./public/readme/5_Checkout_3.gif)
+
+   > Customers are sent an order confirmation email.
+   > ![](./public/readme/6_EmailConfirmation_Customer.jpg)
 
 ### Admin
 
