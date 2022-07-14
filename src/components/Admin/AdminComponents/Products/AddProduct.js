@@ -11,10 +11,10 @@ import {
 	FormGroup,
 	FormControlLabel,
 	Stack,
+	Container,
 	Typography,
 } from "@mui/material";
 import { useSnackbarContext } from "../../../SnackbarContext.js";
-import { Container } from "@mui/system";
 
 export default function AddProduct() {
 	const [name, setName] = useState("");

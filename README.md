@@ -62,7 +62,7 @@ Coming soon
    > Clicking "Proceed to Checkout" will bring them to the 💳 **Checkout** page.
    > ![Moving from Cart to Checkout page](./public/readme/5_Checkout_1.gif)
 
-2. At the 💳 **Checkout** page, customers have to enter their name, email, mobile number, and shipping address. At the bottom, they will be able to see a summary of their order. Clicking "Proceed to Payment Gateway" will redirect them to Stripe to make payment.
+2. At the 💳 **Checkout** page, customers have to enter their name, email, mobile number, and shipping address. At the bottom, they will see a summary of their order. Clicking "Proceed to Payment Gateway" redirects them to Stripe to make payment.
 
    > Customers need to fill out all details before proceeding to make payment via Stripe.
    > ![Users need to fill in all details before proceeding to make payment](./public/readme/5_Checkout_2.gif)
@@ -73,27 +73,28 @@ Coming soon
    > ![Preview of the Stripe gateway](./public/readme/5_Checkout_3.gif)
 
    > Customers are sent an order confirmation email.
-   > ![](./public/readme/6_EmailConfirmation_Customer.jpg)
+   > ![Email confirmation upon successful payment](./public/readme/6_EmailConfirmation_Customer.jpg)
 
-### Admin
+### Receiving New Orders (Admin)
 
-**Receiving New Orders**
+- Upon successful payment for a new order, Admin receives an email notification with the order details.
 
-- Upon successful payment for a new order, Admin will receive an email notification with the order details.
+### Viewing and Marking Orders as Complete (Admin)
 
-**Viewing and Marking Orders as Complete**
-
-1. Upon login, admin can see an overview of all Orders (incomplete and complete).
-2. Each order contains the following details:
+1. On successful login to the Admin Dashboard, the admin sees an overview of Orders (Pending and Completed).
+2. They can see the details of each order, including:
    - Items (Product, Quantity of product, Colour)
    - Total amount
    - Customer's name
    - Customer's email
    - Customer's mobile number
    - Shipping address
-3. Admin is able to mark an order as complete once the items have been sent out.
+3. The admin can mark an order as complete once the items have been sent out.
 
-**Adding, Updating and Deleting Products and Colours**
+> Walkthrough of viewing orders and marking them as complete
+> ![Walkthrough of how the admin would view and edit orders](./public/readme/9_Admin_Orders_Overview.gif)
+
+### Adding, Updating and Deleting Products and Colours (Admin)
 
 _Products refer to the different 3D-printed designs. Colours refer to the 3D-printing material._
 
@@ -109,6 +110,12 @@ _Products refer to the different 3D-printed designs. Colours refer to the 3D-pri
    - Colour name
    - Colour hex code
    - Availability
+
+> Walkthrough of adding, editing and deleting Products
+> ![Walkthrough of how the admin would view and edit orders](./public/readme/10_Admin_Products.gif)
+
+> Walkthrough of adding, editing and deleting Colours
+> ![Walkthrough of how the admin would view and edit orders](./public/readme/11_Admin_Colours.gif)
 
 ## Built With
 
