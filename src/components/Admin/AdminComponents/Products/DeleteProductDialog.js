@@ -69,8 +69,12 @@ export default function DeleteProductDialog({
 					</DialogContentText>
 				</DialogContent>
 				<DialogActions>
-					<Button onClick={handleDelete}>Delete</Button>
-					<Button onClick={handleClose}>Back</Button>
+					<Button variant="outlined" onClick={handleClose}>
+						Back
+					</Button>
+					<Button variant="contained" color="error" onClick={handleDelete}>
+						Delete
+					</Button>
 				</DialogActions>
 			</Dialog>
 		</div>
