@@ -22,6 +22,8 @@ Thus, the goal of this project was to build a customised online store that meets
 - It must be easy to view order details and mark them as complete.
 - It must be easy to add, update and delete product listings.
 
+> **Note: This is the frontend repo. The backend repo can be viewed [here](https://github.com/gcskhor/supercrimp-store-backend).**
+
 ## Website
 
 Coming soon
