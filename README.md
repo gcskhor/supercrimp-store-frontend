@@ -22,13 +22,13 @@ Thus, the goal of this project was to build a customised online store that meets
 - It must be easy to view order details and mark them as complete.
 - It must be easy to add, update and delete product listings.
 
+> **Note: This is the frontend repo. The backend repo can be viewed [here](https://github.com/gcskhor/supercrimp-store-backend).**
+
 ## Website
 
 Coming soon
 
 ## Features
-
-<!-- To be fleshed out with screenshots later -->
 
 ### Browsing product catalogue
 
@@ -119,21 +119,21 @@ _Products refer to the different 3D-printed designs. Colours refer to the 3D-pri
 
 ## Built With
 
-|               | Tech                | Purpose           |
-| ------------- | ------------------- | ----------------- |
-| Frontend      | **React**           | User interface    |
-|               | **React Router**    | Component routing |
-|               | **Material UI**     | Component library |
-| Backend       | **Node.js**         | Server            |
-|               | **Express**         | Server            |
-|               | **PostgreSQL**      | Database          |
-|               | **Sequelize**       | Database          |
-| Functionality | **Stripe**          | Payment           |
-|               | **JWT**             | Authentication    |
-|               | **Twilio SendGrid** | Email updates     |
+|                    | Tech                                                       | Purpose           |
+| ------------------ | ---------------------------------------------------------- | ----------------- |
+| **Frontend**       | [React](https://github.com/facebook/react/)                | User interface    |
+|                    | [React Router](https://github.com/remix-run/react-router)  | Component routing |
+|                    | [Material UI](https://github.com/mui/material-ui)          | Component library |
+| **Backend**        | [Node.js](https://github.com/nodejs/node)                  | Server            |
+|                    | [Express](https://github.com/expressjs/express)            | Server            |
+|                    | [PostgreSQL](https://www.postgresql.org/)                  | Database          |
+|                    | [Sequelize](https://sequelize.org/)                        | Database          |
+| **Functionality**  | [Stripe](https://stripe.com/docs)                          | Payment           |
+|                    | [JWT](https://jwt.io/)                                     | Authentication    |
+|                    | [Twilio SendGrid](https://docs.sendgrid.com/)              | Email updates     |
 
 ## Contributors
 
-**Elizabeth Tan** | [GitHub](https://github.com/liztanyl/) • [LinkedIn](https://www.linkedin.com/in/elizabethtanyulin/) • [Email](elizabeth.tanyulin@gmail.com)
+**Elizabeth Tan** | [GitHub](https://github.com/liztanyl/) • [LinkedIn](https://www.linkedin.com/in/elizabethtanyulin/) • [Email](mailto:elizabeth.tanyulin@gmail.com)
 
-**Gerald Khor** | [GitHub](https://github.com/gcskhor/) • [LinkedIn](https://www.linkedin.com/in/gerald-khor/) • [Email](elizabeth.tanyulin@gmail.com)
+**Gerald Khor** | [GitHub](https://github.com/gcskhor/) • [LinkedIn](https://www.linkedin.com/in/gerald-khor/) • [Email](mailto:gcskhor@yahoo.com.sg)
