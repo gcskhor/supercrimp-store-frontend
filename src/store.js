@@ -1,4 +1,10 @@
-export const BACKEND_URL =
-  window.location.origin === 'http://localhost:3000'
-    ? 'http://localhost:3004'
-    : 'http://3.82.120.69:3004';
+import axios from 'axios';
+
+axios.defaults.withCredentials = true;
+
+const baseURL =
+  process.env.NODE_ENV === 'production'
+    ? 'https://supercrimp.herokuapp.com'
+    : 'http://localhost:3004';
+
+export const BackendCall = axios.create({ baseURL });
