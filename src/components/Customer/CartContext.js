@@ -1,26 +1,26 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import React, { useContext, useEffect, useReducer, useState } from 'react';
 
 const ACTIONS = {
-	RETRIEVE: "retrieve cart",
-	ADD: "add item to cart",
-	EDIT_COLOUR: "edit colour of item in cart",
-	EDIT_QTY: "edit quantity of item in cart",
-	REMOVE: "remove item from cart",
+	RETRIEVE: 'retrieve cart',
+	ADD: 'add item to cart',
+	EDIT_COLOUR: 'edit colour of item in cart',
+	EDIT_QTY: 'edit quantity of item in cart',
+	REMOVE: 'remove item from cart',
 };
 
 const cartReducer = (state, action) => {
 	switch (action.type) {
 		case ACTIONS.RETRIEVE:
-			return action.payload.cart;
+			return action.payload.cart; // to adjust
 
 		case ACTIONS.ADD:
-			return action.payload;
+			return; // to adjust
 
 		case ACTIONS.EDIT_COLOUR:
-			return action.payload.cart;
+			return; // to adjust
 
 		case ACTIONS.EDIT_QTY:
-			return action.payload.cart;
+			return; // to adjust
 
 		case ACTIONS.REMOVE:
 			const { newCart } = action.payload;
@@ -32,7 +32,7 @@ const cartReducer = (state, action) => {
 };
 
 const retrieveCart = () => {
-	const cart = JSON.parse(localStorage.getItem("cart"));
+	const cart = JSON.parse(localStorage.getItem('cart'));
 	return {
 		type: ACTIONS.RETRIEVE,
 		payload: { cart },
@@ -40,7 +40,7 @@ const retrieveCart = () => {
 };
 
 const addItemToCart = (product, colourId, quantity) => {
-	const cart = JSON.parse(localStorage.getItem("cart"));
+	const cart = JSON.parse(localStorage.getItem('cart'));
 	const newCart = cart ?? [];
 
 	const newItem = {
@@ -63,7 +63,7 @@ const addItemToCart = (product, colourId, quantity) => {
 		existingItem.subtotalCost += Number(product.currentPrice);
 	}
 
-	localStorage.setItem("cart", JSON.stringify(newCart));
+	localStorage.setItem('cart', JSON.stringify(newCart));
 
 	return {
 		type: ACTIONS.ADD,
@@ -72,7 +72,7 @@ const addItemToCart = (product, colourId, quantity) => {
 };
 
 const editItemColour = (productId, colourId, currentPrice, newColour) => {
-	const cart = JSON.parse(localStorage.getItem("cart"));
+	const cart = JSON.parse(localStorage.getItem('cart'));
 	const currentItemIndex = cart.findIndex(
 		(item) => item.productId === productId && item.colourId === colourId
 	);
@@ -93,7 +93,7 @@ const editItemColour = (productId, colourId, currentPrice, newColour) => {
 		cart.splice(currentItemIndex, 1);
 	}
 
-	localStorage.setItem("cart", JSON.stringify(cart));
+	localStorage.setItem('cart', JSON.stringify(cart));
 	return {
 		type: ACTIONS.EDIT_COLOUR,
 		payload: { cart },
@@ -101,7 +101,7 @@ const editItemColour = (productId, colourId, currentPrice, newColour) => {
 };
 
 const editItemQuantity = (productId, colourId, currentPrice, quantity) => {
-	const cart = JSON.parse(localStorage.getItem("cart"));
+	const cart = JSON.parse(localStorage.getItem('cart'));
 	const itemIndex = cart.findIndex(
 		(item) => item.productId === productId && item.colourId === colourId
 	);
@@ -110,7 +110,7 @@ const editItemQuantity = (productId, colourId, currentPrice, quantity) => {
 	item.quantity = quantity;
 	item.subtotalCost = currentPrice * quantity;
 
-	localStorage.setItem("cart", JSON.stringify(cart));
+	localStorage.setItem('cart', JSON.stringify(cart));
 	return {
 		type: ACTIONS.EDIT_QTY,
 		payload: { cart },
@@ -118,15 +118,15 @@ const editItemQuantity = (productId, colourId, currentPrice, quantity) => {
 };
 
 const removeItemFromCart = (productId, colourId) => {
-	const cart = JSON.parse(localStorage.getItem("cart"));
+	const cart = JSON.parse(localStorage.getItem('cart'));
 	const newCart = cart.filter(
 		(item) => !(item.productId === productId && item.colourId === colourId)
 	);
 
 	if (newCart.length < 1) {
-		localStorage.removeItem("cart");
+		localStorage.removeItem('cart');
 	} else {
-		localStorage.setItem("cart", JSON.stringify(newCart));
+		localStorage.setItem('cart', JSON.stringify(newCart));
 	}
 
 	return {
