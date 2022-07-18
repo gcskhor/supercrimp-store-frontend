@@ -3,6 +3,7 @@ import { Button, CardMedia, TextField, Stack } from '@mui/material';
 import { BackendCall } from '../../../store';
 import { useSnackbarContext } from '../../SnackbarContext.js';
 import { Container } from '@mui/system';
+import axios from 'axios';
 
 export default function Login() {
   const [email, setEmail] = useState('');
@@ -10,19 +11,34 @@ export default function Login() {
   const { enableSnackBar } = useSnackbarContext();
 
   const handleLogin = () => {
-    BackendCall.post(`/admin/login`, {
-      email: email,
-      password: password,
-    })
-      .then((response) => {
-        // login success
-        enableSnackBar('Successful login')();
-        window.location.href = '/admin';
-      })
-      .catch((err) => {
-        console.log(err.response);
-        enableSnackBar('Login failed')();
-      });
+    process.env.NODE_ENV === 'production'
+      ? axios
+          .post(`/api/admin/login`, {
+            email: email,
+            password: password,
+          })
+          .then((response) => {
+            // login success
+            enableSnackBar('Successful login')();
+            window.location.href = '/admin';
+          })
+          .catch((err) => {
+            console.log(err.response);
+            enableSnackBar('Login failed')();
+          })
+      : BackendCall.post(`/admin/login`, {
+          email: email,
+          password: password,
+        })
+          .then((response) => {
+            // login success
+            enableSnackBar('Successful login')();
+            window.location.href = '/admin';
+          })
+          .catch((err) => {
+            console.log(err.response);
+            enableSnackBar('Login failed')();
+          });
   };
 
   return (
