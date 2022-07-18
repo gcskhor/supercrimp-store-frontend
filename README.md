@@ -28,8 +28,6 @@ Coming soon
 
 ## Features
 
-<!-- To be fleshed out with screenshots later -->
-
 ### Browsing product catalogue
 
 1. On the home page, customers can see the list of available products.
@@ -119,18 +117,18 @@ _Products refer to the different 3D-printed designs. Colours refer to the 3D-pri
 
 ## Built With
 
-|               | Tech                | Purpose           |
-| ------------- | ------------------- | ----------------- |
-| **Frontend**      | [React](https://github.com/facebook/react/)           | User interface    |
-|               | [React Router](https://github.com/remix-run/react-router)    | Component routing |
-|               | [Material UI](https://github.com/mui/material-ui)     | Component library |
-| **Backend**       | [Node.js](https://github.com/nodejs/node)         | Server            |
-|               | [Express](https://github.com/expressjs/express)         | Server            |
-|               | [PostgreSQL](https://www.postgresql.org/)      | Database          |
-|               | [Sequelize](https://sequelize.org/)       | Database          |
-| **Functionality** | [Stripe](https://stripe.com/docs)          | Payment           |
-|               | [JWT](https://jwt.io/)             | Authentication    |
-|               | [Twilio SendGrid](https://docs.sendgrid.com/) | Email updates     |
+|                    | Tech                                                       | Purpose           |
+| ------------------ | ---------------------------------------------------------- | ----------------- |
+| **Frontend**       | [React](https://github.com/facebook/react/)                | User interface    |
+|                    | [React Router](https://github.com/remix-run/react-router)  | Component routing |
+|                    | [Material UI](https://github.com/mui/material-ui)          | Component library |
+| **Backend**        | [Node.js](https://github.com/nodejs/node)                  | Server            |
+|                    | [Express](https://github.com/expressjs/express)            | Server            |
+|                    | [PostgreSQL](https://www.postgresql.org/)                  | Database          |
+|                    | [Sequelize](https://sequelize.org/)                        | Database          |
+| **Functionality**  | [Stripe](https://stripe.com/docs)                          | Payment           |
+|                    | [JWT](https://jwt.io/)                                     | Authentication    |
+|                    | [Twilio SendGrid](https://docs.sendgrid.com/)              | Email updates     |
 
 ## Contributors
 
