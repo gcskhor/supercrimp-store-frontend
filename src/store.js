@@ -7,4 +7,4 @@ const baseURL =
     ? 'https://supercrimp.herokuapp.com'
     : 'http://localhost:3004';
 
-export default axios.create({ baseURL });
+export const BackendCall = axios.create({ baseURL });
