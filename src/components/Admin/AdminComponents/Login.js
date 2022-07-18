@@ -11,34 +11,35 @@ export default function Login() {
   const { enableSnackBar } = useSnackbarContext();
 
   const handleLogin = () => {
-    process.env.NODE_ENV === 'production'
-      ? axios
-          .post(`/api/admin/login`, {
-            email: email,
-            password: password,
-          })
-          .then((response) => {
-            // login success
-            enableSnackBar('Successful login')();
-            window.location.href = '/admin';
-          })
-          .catch((err) => {
-            console.log(err.response);
-            enableSnackBar('Login failed')();
-          })
-      : BackendCall.post(`/admin/login`, {
-          email: email,
-          password: password,
-        })
-          .then((response) => {
-            // login success
-            enableSnackBar('Successful login')();
-            window.location.href = '/admin';
-          })
-          .catch((err) => {
-            console.log(err.response);
-            enableSnackBar('Login failed')();
-          });
+    // process.env.NODE_ENV === 'production'
+    //   ? axios
+    //       .post(`/api/admin/login`, {
+    //         email: email,
+    //         password: password,
+    //       })
+    //       .then((response) => {
+    //         // login success
+    //         enableSnackBar('Successful login')();
+    //         window.location.href = '/admin';
+    //       })
+    //       .catch((err) => {
+    //         console.log(err.response);
+    //         enableSnackBar('Login failed')();
+    //       })
+    //   :
+    BackendCall.post(`/admin/login`, {
+      email: email,
+      password: password,
+    })
+      .then((response) => {
+        // login success
+        enableSnackBar('Successful login')();
+        window.location.href = '/admin';
+      })
+      .catch((err) => {
+        console.log(err.response);
+        enableSnackBar('Login failed')();
+      });
   };
 
   return (
